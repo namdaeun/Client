@@ -28,6 +28,7 @@ export interface BoxStyleProps {
   backgroundSize?: string;
   backgroundPosition?: string;
   backgroundRepeat?: string;
+  cursor?: string;
 }
 
 export const getBoxStyle = ({
@@ -56,6 +57,7 @@ export const getBoxStyle = ({
   backgroundSize = '',
   backgroundPosition = '',
   backgroundRepeat = '',
+  cursor = '',
 }: BoxStyleProps) =>
   css({
     display,
@@ -83,4 +85,5 @@ export const getBoxStyle = ({
     backgroundSize,
     backgroundPosition,
     backgroundRepeat,
+    cursor
   });

@@ -3,12 +3,17 @@ import ContentBox from '../../../components/ContentBox/ContentBox';
 import { Theme } from '../../../styles/theme';
 import { detailText, iconWrapper, textWrapper } from './MemoList.style';
 import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 interface MemoListProps extends React.HTMLAttributes<HTMLDivElement> {
   date: string;
 }
 
 const MemoList = ({ children, date }: MemoListProps) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate('/view');
+  }
   return (
     <ContentBox
       variant="content"
@@ -16,7 +21,9 @@ const MemoList = ({ children, date }: MemoListProps) => {
         padding: '0.7rem',
         justifyContent: 'space-between',
         marginBottom: '0.5rem',
+        cursor: 'pointer',
       }}
+      handleClick={handleClick}
     >
       <article css={textWrapper}>
         <h1 css={Theme.fonts.title}>{children}</h1>

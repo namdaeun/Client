@@ -6,9 +6,10 @@ import { hexToRGBA } from '../../utils/hexToRGBA';
 export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
   styles?: BoxStyleProps;
   variant?: 'default' | 'content';
+  handleClick?: () => void;
 }
 
-const ContentBox = ({ children, styles = {}, variant = 'default' }: BoxProps) => {
+const ContentBox = ({ children, styles = {}, variant = 'default', handleClick }: BoxProps) => {
   const {theme} = useTheme();
   const customStyle = {
     'default': {
@@ -29,7 +30,7 @@ const ContentBox = ({ children, styles = {}, variant = 'default' }: BoxProps) =>
     },
   }
 
-  return <div css={getBoxStyle({ ...customStyle[variant], ...styles })}>{children}</div>;
+  return <div css={getBoxStyle({ ...customStyle[variant], ...styles })} onClick={handleClick}>{children}</div>;
 };
 
 export default ContentBox;
