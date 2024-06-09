@@ -5,7 +5,7 @@ import { faPen, faHeart as faSolidHeart } from "@fortawesome/free-solid-svg-icon
 import { faHeart as faRegularHeart} from "@fortawesome/free-regular-svg-icons";
 import { useState } from "react";
 import { Theme } from "../../styles/theme";
-import { btnWrapper, iconWrapper } from "./ViewPage.style";
+import { btnWrapper, content, iconWrapper } from "./ViewPage.style";
 import { useTheme } from "../../context/theme";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
@@ -28,10 +28,13 @@ const ViewPage = () => {
       <ContentBox variant="content" styles={{
         display: 'flex',
         flexDirection: 'column',
+        alignItems: 'start',
         justifyContent: 'space-between',
-        height: '75%',
+        height: '70%',
+        margin: '0.5rem 0',
+        padding: '0.5rem'
       }}>
-        <div>어쩌고 저쩌고</div>
+        <article css={content}>어쩌고 저쩌고</article>
         <section css={iconWrapper}>
           <FontAwesomeIcon
             icon={isHeart ? faSolidHeart : faRegularHeart}

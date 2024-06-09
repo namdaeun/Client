@@ -24,8 +24,8 @@ const ContentBox = ({
     default: {
       width: '50vh',
       height: '60vh',
-
       padding: '1.2rem',
+
       borderRadius: '2rem',
       backgroundColor: hexToRGBA({ hex: theme.bgColor, opacity: 0.589 }),
       color: theme.textColor,
@@ -33,6 +33,7 @@ const ContentBox = ({
     content: {
       display: 'flex',
       alignItems: 'center',
+      
       borderRadius: '0.5rem',
       backgroundColor: theme.bgColor,
       color: theme.textColor,
