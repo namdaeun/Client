@@ -1,9 +1,12 @@
 import ContentBox from '../../components/@common/ContentBox/ContentBox';
-import { wrapper } from './MainPage.style';
+import * as s from './MainPage.style';
 const MainPage = () => {
   return (
     <>
-      <main css={wrapper}>MainPage</main>
+      <main css={s.wrapper}>
+        <section css={s.header}>Jinda Note</section>
+        <section css={s.quote}></section>
+      </main>
       <ContentBox variant='content'>
         리액트 토이 프로젝트
       </ContentBox>

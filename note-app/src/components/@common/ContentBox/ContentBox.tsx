@@ -15,7 +15,7 @@ const ContentBox = ({ children, styles = {}, variant = 'default' }: BoxProps) =>
       width: '50vh',
       height: '60vh',
       
-      padding: '1rem',
+      padding: '1.2rem',
       borderRadius: '2rem',
       backgroundColor: hexToRGBA({hex: theme.bgColor, opacity: 0.589}),
       color: theme.textColor,
