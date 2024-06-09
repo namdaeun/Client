@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 import Router from './Router';
 import { themeProps, useTheme } from './context/theme';
-import ContentBox from './components/@common/ContentBox/ContentBox';
-import { BoxHeader } from './components/@common/BoxHeader/BoxHeader';
+import ContentBox from './components/ContentBox/ContentBox';
+import { BoxHeader } from './components/BoxHeader/BoxHeader';
 
 const wrapper = (theme: themeProps) => css`
   display: flex;
