@@ -16,12 +16,19 @@ const AddPage = () => {
   const [isTitleFocused, setIsTitleFocused] = useState(false);
   const [isContentFocused, setIsContentFocused] = useState(false);
   const [count, setCount] = useState(0);
+  const [isExceed, setIsExceed] = useState(false);
 
   const handleTextCount = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setCount(e.target.value.length);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (count > 1000) {
+      setIsExceed(true);
+    } else {
+      setIsExceed(false);
+    }
+  }, [count]);
 
   return (
     <main css={pageWrapper}>
@@ -33,12 +40,14 @@ const AddPage = () => {
           ref={titleRef}
           onFocus={() => setIsTitleFocused(true)}
           onBlur={() => setIsTitleFocused(false)}
+          maxLength={17}
         />
       </ContentBox>
       <ContentBox
         variant={'content'}
         styles={{ height: '30vh', flexDirection: 'column' }}
         isFocus={isContentFocused}
+        isExceed={isExceed}
       >
         <textarea
           css={[Theme.fonts.detail, detailInputWrapper]}
@@ -47,6 +56,7 @@ const AddPage = () => {
           onFocus={() => setIsContentFocused(true)}
           onBlur={() => setIsContentFocused(false)}
           onChange={handleTextCount}
+          maxLength={1003}
         />
         <span css={textCount}>{count}/1000</span>
       </ContentBox>

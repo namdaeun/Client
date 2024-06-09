@@ -7,9 +7,16 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
   styles?: BoxStyleProps;
   variant?: 'default' | 'content';
   isFocus?: boolean;
+  isExceed?: boolean;
 }
 
-const ContentBox = ({ children, styles = {}, variant = 'default', isFocus }: BoxProps) => {
+const ContentBox = ({
+  children,
+  styles = {},
+  variant = 'default',
+  isFocus,
+  isExceed,
+}: BoxProps) => {
   const { theme } = useTheme();
   const customStyle = {
     default: {
@@ -27,7 +34,12 @@ const ContentBox = ({ children, styles = {}, variant = 'default', isFocus }: Box
       borderRadius: '0.5rem',
       backgroundColor: theme.bgColor,
       color: theme.textColor,
-      border: isFocus ? `1.5px solid ${theme.point2Color}` : `1.5px solid transparent`,
+      border:
+        isFocus && !isExceed
+          ? `1.5px solid ${theme.point2Color}`
+          : isFocus && isExceed
+            ? `1.5px solid ${theme.redBorderColor}`
+            : `1.5px solid transparent`,
     },
   };
 

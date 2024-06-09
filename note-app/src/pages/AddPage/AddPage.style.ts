@@ -43,6 +43,6 @@ export const textAreaContainer = css`
 
 export const textCount = css`
   margin-left: auto;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
   ${Theme.fonts.detail};
 `;
