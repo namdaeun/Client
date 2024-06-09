@@ -1,6 +1,7 @@
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef, useState } from 'react';
+import { categoryList } from '../../constants/filter';
 import {
   categoryListWrapper,
   categoryWrapper,
@@ -12,8 +13,6 @@ const DropDown = () => {
   const [category, setCategory] = useState('최근생성순');
   const [isOpen, setIsOpen] = useState(false);
   const dropDownRef = useRef<HTMLDivElement>(null);
-
-  const categoryList = ['최근생성순', '제목순', '즐겨찾기만'];
 
   const handleCategory = (category: string) => {
     setCategory(category);
