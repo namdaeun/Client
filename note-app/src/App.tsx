@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import Router from './Router';
 import { themeProps, useTheme } from './context/theme';
 import ContentBox from './components/@common/ContentBox/ContentBox';
+import { BoxHeader } from './components/@common/BoxHeader/BoxHeader';
 
 const wrapper = (theme: themeProps) => css`
   display: flex;
@@ -21,7 +22,8 @@ function App() {
 
   return (
     <div css={wrapper(theme)}>
-      <ContentBox variant='default'> 
+      <ContentBox variant='default'>
+        <BoxHeader />
         <Router />
       </ContentBox>
     </div>
