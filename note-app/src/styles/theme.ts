@@ -11,15 +11,15 @@ const colors = {
 
 const fonts = {
   title: css`
-    font-weight: 600;
-    font-size: 3.09rem;
+    font-weight: 500;
+    font-size: 1rem;
     font-family: 'Pretendard Variable', sans-serif;
     font-style: normal;
     line-height: 120%; /* 28.8px */
   `,
   detail: css`
-    font-weight: 600;
-    font-size: 1.87rem;
+    font-weight: 400;
+    font-size: 0.65rem;
     font-family: 'Pretendard Variable', sans-serif;
     font-style: normal;
     line-height: 120%; /* 26.4px */
@@ -27,7 +27,7 @@ const fonts = {
 
   header: css`
     font-weight: 400;
-    font-size: 5.87rem;
+    font-size: 2rem;
     font-family: 'Single Day', cursive;
     font-style: normal;
     line-height: 120%; /* 26.4px */
