@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import ContentBox from '../../components/ContentBox/ContentBox';
+import Title from '../../components/Title/Title';
 import { useTheme } from '../../context/theme';
 import { Theme } from '../../styles/theme';
 import {
@@ -13,7 +14,6 @@ import {
   pageWrapper,
   textCount,
   titleInputWrapper,
-  titleWrapper,
 } from './AddPage.style';
 
 const AddPage = () => {
@@ -40,7 +40,7 @@ const AddPage = () => {
 
   return (
     <main css={pageWrapper}>
-      <h1 css={[Theme.fonts.header, titleWrapper]}>Jinda Note</h1>
+      <Title>Jinda Note</Title>
       <ContentBox variant={'content'} styles={{ height: '2.5rem' }} isFocus={isTitleFocused}>
         <input
           css={[Theme.fonts.title, titleInputWrapper(theme)]}
