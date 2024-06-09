@@ -1,9 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+import Button from '../../components/Button/Button';
 import ContentBox from '../../components/ContentBox/ContentBox';
 import { useTheme } from '../../context/theme';
 import { Theme } from '../../styles/theme';
 import {
+  buttonContainer,
   detailInputWrapper,
   pageWrapper,
   textCount,
@@ -19,6 +22,7 @@ const AddPage = () => {
   const [isContentFocused, setIsContentFocused] = useState(false);
   const [count, setCount] = useState(0);
   const [isExceed, setIsExceed] = useState(false);
+  const navigate = useNavigate();
 
   const handleTextCount = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setCount(e.target.value.length);
@@ -62,6 +66,14 @@ const AddPage = () => {
         />
         <span css={textCount}>{count}/1000</span>
       </ContentBox>
+      <section css={buttonContainer}>
+        <Button variant="secondary" handleBtnClick={() => navigate(`/`)}>
+          뒤로가기
+        </Button>
+        <Button variant="default" handleBtnClick={() => navigate(`/`)}>
+          저장하기
+        </Button>
+      </section>
     </main>
   );
 };

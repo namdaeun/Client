@@ -51,3 +51,8 @@ export const textCount = css`
   padding: 0.5rem;
   ${Theme.fonts.detail};
 `;
+
+export const buttonContainer = css`
+  display: flex;
+  justify-content: space-between;
+`;
