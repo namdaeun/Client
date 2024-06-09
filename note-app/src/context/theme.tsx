@@ -1,5 +1,19 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 
+export type themeProps = {
+  bgColor: string,
+  textColor: string,
+  subTextColor: string,
+  subText2Color: string,
+
+  btnTextColor: string,
+  point1Color: string,
+  point2Color: string,
+
+  redBorderColor: string,
+  backgroundImg: string,
+};
+
 const lightTheme = {
   bgColor: '#FFFFFF',
   textColor: '#000000',
@@ -11,6 +25,7 @@ const lightTheme = {
   point2Color: '#E5BEA7',
 
   redBorderColor: '#FC5230',
+  backgroundImg: 'src/assets/lightBackground.png',
 };
 
 const darkTheme = {
@@ -24,20 +39,9 @@ const darkTheme = {
   point2Color: '#446DA3',
 
   redBorderColor: '#AE3A1E',
+  backgroundImg: 'src/assets/darkBackground.png',
 };
 
-type themeProps = {
-  bgColor: string,
-  textColor: string,
-  subTextColor: string,
-  subText2Color: string,
-
-  btnTextColor: string,
-  point1Color: string,
-  point2Color: string,
-
-  redBorderColor: string,
-}
 const ThemeContext = createContext({
   theme: lightTheme,
   toggleTheme: () => {}
