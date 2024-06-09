@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
 import { circleStyle, dotWrapper, wrapper } from "./BoxHeader.style";
-import { Theme } from '../../../styles/theme';
-import { useTheme } from "../../../context/theme";
+import { useTheme } from "../../context/theme";
+import { Theme } from "../../styles/theme";
 
 export const BoxHeader = () => {
   const { toggleTheme } = useTheme();
