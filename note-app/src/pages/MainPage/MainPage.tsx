@@ -1,5 +1,5 @@
+import { useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
-import ContentBox from '../../components/ContentBox/ContentBox';
 import DropDown from '../../components/DropDown/DropDown';
 import Title from '../../components/Title/Title';
 import { barWrapper } from './MainPage.style';
@@ -8,6 +8,11 @@ import Quote from './Quote/Quote';
 import SearchBar from './SearchBar/SearchBar';
 
 const MainPage = () => {
+  const navigate = useNavigate();
+
+  const handleBtnClick = () => {
+    navigate('/add');
+  }
   return (
     <>
       <Title>Jinda Note</Title>
@@ -19,7 +24,7 @@ const MainPage = () => {
       <MemoList date='몇 초' >리액트 토이 프로젝트</MemoList>
       <MemoList date='몇 초' >리액트 토이 프로젝트</MemoList>
       <MemoList date='몇 초' >리액트 토이 프로젝트</MemoList>
-      <Button>새 노트</Button>
+      <Button handleBtnClick={handleBtnClick}>새 노트</Button>
     </>
   );
 };

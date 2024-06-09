@@ -3,7 +3,7 @@ import { btnStyle, customStyle } from "./Button.style";
 
 interface ButtonProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: 'default' | 'secondary';
-  handleBtnClick: () => {};
+  handleBtnClick: () => void;
 }
 
 const Button = ({children, variant='default', handleBtnClick}: ButtonProps) => {
