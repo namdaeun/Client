@@ -7,6 +7,7 @@ import {
   categoryWrapper,
   dropDownWrapper,
   iconWrapper,
+  wrapper,
 } from './DropDown.style';
 
 const DropDown = () => {
@@ -24,13 +25,13 @@ const DropDown = () => {
   };
 
   return (
-    <>
+    <section css={wrapper}>
       <button onClick={dropdownHandler} css={dropDownWrapper}>
         {category}
         {isOpen ? (
-          <FontAwesomeIcon icon={faCaretDown} css={iconWrapper} />
-        ) : (
           <FontAwesomeIcon icon={faCaretUp} css={iconWrapper} />
+        ) : (
+          <FontAwesomeIcon icon={faCaretDown} css={iconWrapper} />
         )}
       </button>
       {isOpen && (
@@ -46,7 +47,7 @@ const DropDown = () => {
           ))}
         </section>
       )}
-    </>
+    </section>
   );
 };
 
