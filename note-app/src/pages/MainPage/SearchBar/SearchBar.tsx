@@ -1,4 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ContentBox from "../../../components/ContentBox/ContentBox";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { Theme } from "../../../styles/theme";
+import { textStyle } from "./SearchBar.style";
 
 const SearchBar = () => {
 
@@ -10,8 +14,8 @@ const SearchBar = () => {
       backgroundColor: 'rgba(255, 255, 255, 0.5)',
       border: 'gray solid 1px'
     }}>
-      <div>검색</div>
-      <div>아이콘</div>
+      <div css={textStyle}>검색</div>
+      <FontAwesomeIcon icon={faMagnifyingGlass} />
     </ContentBox>
   );
 };
