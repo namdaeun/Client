@@ -27,7 +27,7 @@ const fonts = {
 
   header: css`
     font-weight: 400;
-    font-size: 5.87rem;
+    font-size: 1.8rem;
     font-family: 'Single Day', cursive;
     font-style: normal;
     line-height: 120%; /* 26.4px */
@@ -35,7 +35,7 @@ const fonts = {
   `,
   quote: css`
     font-weight: 400;
-    font-size: 2.7rem;
+    font-size: 0.8rem;
     font-family: 'Single Day', cursive;
     font-style: normal;
     line-height: 130%; /* 23.4px */
