@@ -21,7 +21,7 @@ export const titleInputWrapper = css`
 `;
 
 export const detailInputWrapper = css`
-  width: 100%;
+  width: 95%;
   height: 90%;
   border: none;
   padding: 0.5rem;
