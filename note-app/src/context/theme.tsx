@@ -4,7 +4,6 @@ export type themeProps = {
   bgColor: string,
   textColor: string,
 
-  btnTextColor: string,
   point1Color: string,
   point2Color: string,
 
@@ -16,7 +15,6 @@ const lightTheme = {
   bgColor: '#FFFFFF',
   textColor: '#000000',
   
-  btnTextColor: '#FFFFFF',
   point1Color: '#AAABAA',
   point2Color: '#E5BEA7',
 
@@ -28,7 +26,6 @@ const darkTheme = {
   bgColor: '#000000',
   textColor: '#FFFFFF',
 
-  btnTextColor: '#FFFFFF',
   point1Color: '#E9A6B0',
   point2Color: '#446DA3',
 

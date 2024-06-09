@@ -1,3 +1,4 @@
+import Button from '../../components/Button/Button';
 import ContentBox from '../../components/ContentBox/ContentBox';
 import DropDown from '../../components/DropDown/DropDown';
 import Title from '../../components/Title/Title';
@@ -18,6 +19,7 @@ const MainPage = () => {
       <MemoList date='몇 초' >리액트 토이 프로젝트</MemoList>
       <MemoList date='몇 초' >리액트 토이 프로젝트</MemoList>
       <MemoList date='몇 초' >리액트 토이 프로젝트</MemoList>
+      <Button>새 노트</Button>
     </>
   );
 };

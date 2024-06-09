@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 const colors = {
   subTextColor: '#787878',
   subText2Color: '#9E9E9E',
+  btnTextColor: '#FFFFFF',
 
   redDot: '#FC5230',
   yellowDot: '#FFCD4A',
