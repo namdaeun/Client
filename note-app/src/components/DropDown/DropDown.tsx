@@ -1,5 +1,12 @@
+import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef, useState } from 'react';
-import { categoryListWrapper, categoryWrapper, dropDownWrapper } from './DropDown.style';
+import {
+  categoryListWrapper,
+  categoryWrapper,
+  dropDownWrapper,
+  iconWrapper,
+} from './DropDown.style';
 
 const DropDown = () => {
   const [category, setCategory] = useState('최근생성순');
@@ -19,7 +26,14 @@ const DropDown = () => {
 
   return (
     <>
-      <button onClick={dropdownHandler} css={dropDownWrapper}></button>
+      <button onClick={dropdownHandler} css={dropDownWrapper}>
+        {category}
+        {isOpen ? (
+          <FontAwesomeIcon icon={faCaretDown} css={iconWrapper} />
+        ) : (
+          <FontAwesomeIcon icon={faCaretUp} css={iconWrapper} />
+        )}
+      </button>
       {isOpen && (
         <section ref={dropDownRef} css={categoryListWrapper}>
           {categoryList.map((categoryItem) => (

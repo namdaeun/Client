@@ -1,7 +1,9 @@
 import { css } from '@emotion/react';
 
 export const dropDownWrapper = css`
-  width: 5.3rem;
+  display: flex;
+  gap: 0.3rem;
+  width: 6rem;
   white-space: nowrap;
   padding: 0.4rem 0.8rem;
   border-radius: 0.4rem;
@@ -10,19 +12,29 @@ export const dropDownWrapper = css`
   cursor: pointer;
 `;
 
+export const iconWrapper = css`
+  display: flex;
+  margin-left: auto;
+`;
+
 export const categoryListWrapper = css`
   display: flex;
+  width: 5rem;
   flex-direction: column;
-  padding: 0.5rem 0.3rem;
+  padding: 0.5rem;
   border: 1px solid gray;
-  width: 4.6rem;
   border-radius: 0.4rem;
   font-size: 0.9rem;
-  justify-content: center;
-  align-items: center;
+  background-color: white;
 `;
 
 export const categoryWrapper = css`
+  display: flex;
   padding: 0.2rem;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  &:not(:last-of-type) {
+    border-bottom: 1px solid gray;
+  }
 `;
