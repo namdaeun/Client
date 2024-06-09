@@ -8,14 +8,12 @@ import Quote from './Quote/Quote';
 import SearchBar from './SearchBar/SearchBar';
 import { useFetchData } from '../../hooks/useFetchData';
 import { timeSince } from '../../utils/date';
+import { useEffect, useState } from 'react';
 
 const MainPage = () => {
   const navigate = useNavigate();
   const { data, dispatch } = useFetchData();
 
-  const handleBtnClick = () => {
-    navigate('/add');
-  }
   return (
     <>
       <Title>Jinda Note</Title>
@@ -29,7 +27,7 @@ const MainPage = () => {
           return <MemoList key={d.id} date={timeSince(d.date)} id={d.id}>{d.title}</MemoList>
         })
       }
-      <Button handleBtnClick={handleBtnClick}>새 노트</Button>
+      <Button handleBtnClick={() => navigate('/add')}>새 노트</Button>
     </>
   );
 };

@@ -30,7 +30,7 @@ const reducer = (state: NoteProps[], action: ActionProps): NoteProps[] => {
     }
     case "EDIT": {
       newState = state.map((note) =>
-        note.id === action.data.id ? { ...action.data } : note
+        note.id === action.data.id ? { ...note, ...action.data } : note
       );
       break;
     }
@@ -44,12 +44,11 @@ const reducer = (state: NoteProps[], action: ActionProps): NoteProps[] => {
 export const useFetchData = () => {
   const initialState = JSON.parse(localStorage.getItem("noteData") || '[]');
   const [data, dispatch] = useReducer(reducer, initialState);
-
-  // 첫 렌더링 시에만 localStorage에서 데이터 불러오기
+  console.log({data});
   useEffect(() => {
     const loadedData = JSON.parse(localStorage.getItem("noteData") || '[]');
     dispatch({ type: "INIT", data: loadedData})
-  }, [data]);
+  }, []);
 
   return { data, dispatch };
 };
