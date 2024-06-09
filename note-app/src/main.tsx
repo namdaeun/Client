@@ -4,13 +4,16 @@ import Router from './Router.tsx';
 import { Global, ThemeProvider } from '@emotion/react';
 import { Theme } from './styles/theme.ts';
 import { GlobalStyle } from './styles/GlobalStyle.ts';
+import { ThemeModeProvider } from './context/theme.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <>
     <ThemeProvider theme={Theme}>
-      <Global styles={GlobalStyle} />
-      <Router />
-      <App />
+      <ThemeModeProvider>
+        <Global styles={GlobalStyle} />
+        <Router />
+        <App />
+      </ThemeModeProvider>
     </ThemeProvider>
   </>,
 );
