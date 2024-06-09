@@ -21,14 +21,15 @@ const ContentBox = ({ children, styles = {}, variant = 'default' }: BoxProps) =>
       color: theme.textColor,
     },
     'content': {
-      padding: '1rem',
+      display: 'flex',
+      alignItems: 'center',
       borderRadius: '0.5rem',
       backgroundColor: theme.bgColor,
       color: theme.textColor,
     },
   }
 
-  return <div css={getBoxStyle({ ...styles, ...customStyle[variant] })}>{children}</div>;
+  return <div css={getBoxStyle({ ...customStyle[variant], ...styles })}>{children}</div>;
 };
 
 export default ContentBox;
