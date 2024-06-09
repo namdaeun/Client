@@ -5,6 +5,7 @@ export const textWrapper = css`
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
+  cursor: pointer;
 `;
 
 export const detailText = css`
@@ -14,4 +15,5 @@ export const detailText = css`
 export const iconWrapper = css`
   display: flex;
   gap: 1rem;
+  cursor: pointer;
 `;

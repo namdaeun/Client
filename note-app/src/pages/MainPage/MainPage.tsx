@@ -6,9 +6,12 @@ import { barWrapper } from './MainPage.style';
 import MemoList from './MemoList/MemoList';
 import Quote from './Quote/Quote';
 import SearchBar from './SearchBar/SearchBar';
+import { useFetchData } from '../../hooks/useFetchData';
+import { timeSince } from '../../utils/date';
 
 const MainPage = () => {
   const navigate = useNavigate();
+  const { data, dispatch } = useFetchData();
 
   const handleBtnClick = () => {
     navigate('/add');
@@ -21,9 +24,11 @@ const MainPage = () => {
         <SearchBar/>
         <DropDown />
       </section>
-      <MemoList date='몇 초' >리액트 토이 프로젝트</MemoList>
-      <MemoList date='몇 초' >리액트 토이 프로젝트</MemoList>
-      <MemoList date='몇 초' >리액트 토이 프로젝트</MemoList>
+      {
+        data.map(d => {
+          return <MemoList key={d.id} date={timeSince(d.date)} id={d.id}>{d.title}</MemoList>
+        })
+      }
       <Button handleBtnClick={handleBtnClick}>새 노트</Button>
     </>
   );
