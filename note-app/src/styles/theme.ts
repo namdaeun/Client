@@ -52,17 +52,17 @@ const fonts = {
   `,
 
   header: css`
-    font-weight: 600;
+    font-weight: 400;
     font-size: 5.87rem;
-    font-family: 'Single Day', ;
+    font-family: 'Single Day', cursive;
     font-style: normal;
     line-height: 120%; /* 26.4px */
     letter-spacing: -0.66px;
   `,
   quote: css`
-    font-weight: 600;
+    font-weight: 400;
     font-size: 2.7rem;
-    font-family: 'Single Day', sans-serif;
+    font-family: 'Single Day', cursive;
     font-style: normal;
     line-height: 130%; /* 23.4px */
   `,
