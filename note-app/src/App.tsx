@@ -1,8 +1,13 @@
 import { css } from '@emotion/react';
 import Router from './Router';
 import { themeProps, useTheme } from './context/theme';
+import ContentBox from './components/@common/ContentBox/ContentBox';
 
 const wrapper = (theme: themeProps) => css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   width: 100%;
   height: 100vh;
 
@@ -12,11 +17,13 @@ const wrapper = (theme: themeProps) => css`
 `;
 
 function App() {
-  const {theme} = useTheme();
+  const { theme } = useTheme();
 
   return (
     <div css={wrapper(theme)}>
-      <Router />
+      <ContentBox variant='default'> 
+        <Router />
+      </ContentBox>
     </div>
   );
 }
