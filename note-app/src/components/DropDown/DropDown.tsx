@@ -2,6 +2,7 @@ import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef, useState } from 'react';
 import { categoryList } from '../../constants/filter';
+import { useTheme } from '../../context/theme';
 import {
   categoryListWrapper,
   categoryWrapper,
@@ -11,6 +12,7 @@ import {
 } from './DropDown.style';
 
 const DropDown = () => {
+  const { theme } = useTheme();
   const [category, setCategory] = useState('최근생성순');
   const [isOpen, setIsOpen] = useState(false);
   const dropDownRef = useRef<HTMLDivElement>(null);
@@ -26,7 +28,7 @@ const DropDown = () => {
 
   return (
     <section css={wrapper}>
-      <button onClick={dropdownHandler} css={dropDownWrapper}>
+      <button onClick={dropdownHandler} css={dropDownWrapper(theme)}>
         {category}
         {isOpen ? (
           <FontAwesomeIcon icon={faCaretUp} css={iconWrapper} />
@@ -35,7 +37,7 @@ const DropDown = () => {
         )}
       </button>
       {isOpen && (
-        <section ref={dropDownRef} css={categoryListWrapper}>
+        <section ref={dropDownRef} css={categoryListWrapper(theme)}>
           {categoryList.map((categoryItem) => (
             <article
               key={categoryItem}
