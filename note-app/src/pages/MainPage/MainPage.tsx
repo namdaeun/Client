@@ -1,5 +1,6 @@
+import { wrapper } from './MainPage.style';
 const MainPage = () => {
-  return <div>MainPage</div>;
+  return <div css={wrapper}>MainPage</div>;
 };
 
 export default MainPage;
