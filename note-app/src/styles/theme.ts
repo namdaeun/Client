@@ -1,6 +1,9 @@
 import { css } from '@emotion/react';
 
 const colors = {
+  subTextColor: '#787878',
+  subText2Color: '#9E9E9E',
+
   redDot: '#FC5230',
   yellowDot: '#FFCD4A',
   greenDot: '#568A35',
@@ -11,15 +14,15 @@ const colors = {
 
 const fonts = {
   title: css`
-    font-weight: 600;
-    font-size: 3.09rem;
+    font-weight: 500;
+    font-size: 1rem;
     font-family: 'Pretendard Variable', sans-serif;
     font-style: normal;
     line-height: 120%; /* 28.8px */
   `,
   detail: css`
-    font-weight: 600;
-    font-size: 1.87rem;
+    font-weight: 400;
+    font-size: 0.65rem;
     font-family: 'Pretendard Variable', sans-serif;
     font-style: normal;
     line-height: 120%; /* 26.4px */
