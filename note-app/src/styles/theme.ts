@@ -152,7 +152,7 @@ const fonts = {
   `,
 };
 
-export const theme = {
+export const Theme = {
   colors,
   fonts,
 };
