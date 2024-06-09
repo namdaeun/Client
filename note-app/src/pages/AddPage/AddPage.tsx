@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import ContentBox from '../../components/@common/ContentBox/ContentBox';
+
+import ContentBox from '../../components/ContentBox/ContentBox';
 import { Theme } from '../../styles/theme';
 import {
   detailInputWrapper,
@@ -34,7 +35,11 @@ const AddPage = () => {
           onBlur={() => setIsTitleFocused(false)}
         />
       </ContentBox>
-      <ContentBox variant={'content'} styles={{ height: '16rem' }} isFocus={isContentFocused}>
+      <ContentBox
+        variant={'content'}
+        styles={{ height: '30vh', flexDirection: 'column' }}
+        isFocus={isContentFocused}
+      >
         <textarea
           css={[Theme.fonts.detail, detailInputWrapper]}
           placeholder="노트 내용을 입력해주세요"

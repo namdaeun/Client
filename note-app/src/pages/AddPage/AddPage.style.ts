@@ -36,8 +36,13 @@ export const detailInputWrapper = css`
   }
 `;
 
+export const textAreaContainer = css`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const textCount = css`
-  float: right;
+  margin-left: auto;
   padding: 0 0.5rem;
   ${Theme.fonts.detail};
 `;
