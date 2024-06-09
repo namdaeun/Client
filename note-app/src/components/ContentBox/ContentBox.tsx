@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTheme } from '../../../context/theme';
-import { hexToRGBA } from '../../../utils/hexToRGBA';
+import { useTheme } from '../../context/theme';
+import { hexToRGBA } from '../../utils/hexToRGBA';
 import { BoxStyleProps, getBoxStyle } from './ContentBox.style';
 
 export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -16,12 +16,14 @@ const ContentBox = ({ children, styles = {}, variant = 'default', isFocus }: Box
       width: '50vh',
       height: '60vh',
 
-      padding: '1rem',
+      padding: '1.2rem',
       borderRadius: '2rem',
       backgroundColor: hexToRGBA({ hex: theme.bgColor, opacity: 0.589 }),
       color: theme.textColor,
     },
     content: {
+      display: 'flex',
+      alignItems: 'center',
       borderRadius: '0.5rem',
       backgroundColor: theme.bgColor,
       color: theme.textColor,
@@ -29,7 +31,7 @@ const ContentBox = ({ children, styles = {}, variant = 'default', isFocus }: Box
     },
   };
 
-  return <div css={getBoxStyle({ ...styles, ...customStyle[variant] })}>{children}</div>;
+  return <div css={getBoxStyle({ ...customStyle[variant], ...styles })}>{children}</div>;
 };
 
 export default ContentBox;

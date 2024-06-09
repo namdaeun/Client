@@ -1,6 +1,9 @@
 import { css } from '@emotion/react';
 
 const colors = {
+  subTextColor: '#787878',
+  subText2Color: '#9E9E9E',
+
   redDot: '#FC5230',
   yellowDot: '#FFCD4A',
   greenDot: '#568A35',
@@ -27,7 +30,7 @@ const fonts = {
 
   header: css`
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-family: 'Single Day', cursive;
     font-style: normal;
     line-height: 120%; /* 26.4px */
@@ -35,7 +38,7 @@ const fonts = {
   `,
   quote: css`
     font-weight: 400;
-    font-size: 2.7rem;
+    font-size: 0.8rem;
     font-family: 'Single Day', cursive;
     font-style: normal;
     line-height: 130%; /* 23.4px */
