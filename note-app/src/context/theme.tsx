@@ -3,8 +3,6 @@ import { ReactNode, createContext, useContext, useState } from "react";
 export type themeProps = {
   bgColor: string,
   textColor: string,
-  subTextColor: string,
-  subText2Color: string,
 
   btnTextColor: string,
   point1Color: string,
@@ -17,9 +15,7 @@ export type themeProps = {
 const lightTheme = {
   bgColor: '#FFFFFF',
   textColor: '#000000',
-  subTextColor: '#787878',
-  subText2Color: '#9E9E9E',
-
+  
   btnTextColor: '#FFFFFF',
   point1Color: '#AAABAA',
   point2Color: '#E5BEA7',
@@ -31,8 +27,6 @@ const lightTheme = {
 const darkTheme = {
   bgColor: '#000000',
   textColor: '#FFFFFF',
-  subTextColor: '#787878',
-  subText2Color: '#9E9E9E',
 
   btnTextColor: '#FFFFFF',
   point1Color: '#E9A6B0',

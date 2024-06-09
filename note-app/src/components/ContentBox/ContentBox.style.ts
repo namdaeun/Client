@@ -2,6 +2,8 @@ import { css } from '@emotion/react';
 
 export interface BoxStyleProps {
   display?: string;
+  justifyContent?: string;
+  alignItems?:string
   flexDirection?: string;
   boxSizing?: string;
   width?: string;
@@ -30,6 +32,8 @@ export interface BoxStyleProps {
 
 export const getBoxStyle = ({
   display = '',
+  justifyContent = '',
+  alignItems = '',
   width = '',
   height = '',
   margin = '',
@@ -55,6 +59,8 @@ export const getBoxStyle = ({
 }: BoxStyleProps) =>
   css({
     display,
+    justifyContent,
+    alignItems,
     width,
     height,
     margin,
