@@ -19,8 +19,8 @@ const MemoList = ({ children, date }: MemoListProps) => {
       }}
     >
       <article css={textWrapper}>
-        <div css={Theme.fonts.title}>{children}</div>
-        <div css={[Theme.fonts.detail, detailText]}>{date + ' 전 수정했어요'}</div>
+        <h1 css={Theme.fonts.title}>{children}</h1>
+        <h2 css={[Theme.fonts.detail, detailText]}>{date + ' 전 수정했어요'}</h2>
       </article>
       <div css={iconWrapper}>
         <FontAwesomeIcon icon={faPen} />
