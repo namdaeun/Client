@@ -1,7 +1,7 @@
 import React from 'react';
 import { BoxStyleProps, getBoxStyle } from './ContentBox.style';
 import { useTheme } from '../../../context/theme';
-import { hexToRGBA } from '../../../utils/util';
+import { hexToRGBA } from '../../../utils/hexToRGBA';
 
 export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
   styles?: BoxStyleProps;
