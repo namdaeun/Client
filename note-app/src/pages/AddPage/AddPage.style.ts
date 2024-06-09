@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { themeProps } from '../../context/theme';
 import { Theme } from './../../styles/theme';
 
 export const pageWrapper = css`
@@ -9,18 +10,20 @@ export const pageWrapper = css`
 
 export const titleWrapper = css``;
 
-export const titleInputWrapper = css`
+export const titleInputWrapper = (theme: themeProps) => css`
   width: 100%;
   height: 100%;
   padding: 1rem;
   border: none;
   border-radius: 0.5rem;
+  background-color: transparent;
+  color: ${theme.textColor};
   &:focus {
     outline: none;
   }
 `;
 
-export const detailInputWrapper = css`
+export const detailInputWrapper = (theme: themeProps) => css`
   width: 95%;
   height: 90%;
   border: none;
@@ -28,6 +31,8 @@ export const detailInputWrapper = css`
   border-radius: 0.5rem;
   resize: none;
   line-height: 1rem;
+  background-color: transparent;
+  color: ${theme.textColor};
   &:focus {
     outline: none;
   }

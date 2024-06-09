@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 import ContentBox from '../../components/ContentBox/ContentBox';
+import { useTheme } from '../../context/theme';
 import { Theme } from '../../styles/theme';
 import {
   detailInputWrapper,
@@ -11,6 +12,7 @@ import {
 } from './AddPage.style';
 
 const AddPage = () => {
+  const { theme } = useTheme();
   const titleRef = useRef<HTMLInputElement>(null);
   const contentRef = useRef<HTMLTextAreaElement>(null);
   const [isTitleFocused, setIsTitleFocused] = useState(false);
@@ -35,7 +37,7 @@ const AddPage = () => {
       <h1 css={[Theme.fonts.header, titleWrapper]}>Jinda Note</h1>
       <ContentBox variant={'content'} styles={{ height: '3rem' }} isFocus={isTitleFocused}>
         <input
-          css={[Theme.fonts.title, titleInputWrapper]}
+          css={[Theme.fonts.title, titleInputWrapper(theme)]}
           placeholder="노트 제목을 입력해주세요"
           ref={titleRef}
           onFocus={() => setIsTitleFocused(true)}
@@ -50,13 +52,13 @@ const AddPage = () => {
         isExceed={isExceed}
       >
         <textarea
-          css={[Theme.fonts.detail, detailInputWrapper]}
+          css={[Theme.fonts.detail, detailInputWrapper(theme)]}
           placeholder="노트 내용을 입력해주세요"
           ref={contentRef}
           onFocus={() => setIsContentFocused(true)}
           onBlur={() => setIsContentFocused(false)}
           onChange={handleTextCount}
-          maxLength={1003}
+          maxLength={1004}
         />
         <span css={textCount}>{count}/1000</span>
       </ContentBox>
