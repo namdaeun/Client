@@ -18,3 +18,18 @@ export const titleInputWrapper = css`
     outline: none;
   }
 `;
+
+export const detailInputWrapper = css`
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  resize: none;
+  &:focus {
+    outline: none;
+  }
+  &::placeholder {
+    align-items: baseline;
+  }
+`;

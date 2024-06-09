@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import ContentBox from '../../components/@common/ContentBox/ContentBox';
 import { Theme } from '../../styles/theme';
-import { pageWrapper, titleInputWrapper, titleWrapper } from './AddPage.style';
+import { detailInputWrapper, pageWrapper, titleInputWrapper, titleWrapper } from './AddPage.style';
 
 const AddPage = () => {
   const titleRef = useRef<HTMLInputElement>(null);
-  const contentRef = useRef<HTMLInputElement>(null);
+  const contentRef = useRef<HTMLTextAreaElement>(null);
   const [isTitleFocused, setIsTitleFocused] = useState(false);
   const [isContentFocused, setIsContentFocused] = useState(false);
 
@@ -28,8 +28,8 @@ const AddPage = () => {
         />
       </ContentBox>
       <ContentBox variant={'content'} styles={{ height: '9rem' }} isFocus={isContentFocused}>
-        <input
-          css={[Theme.fonts.detail, titleInputWrapper]}
+        <textarea
+          css={[Theme.fonts.detail, detailInputWrapper]}
           placeholder="노트 내용을 입력해주세요"
           ref={contentRef}
           onFocus={() => setIsContentFocused(true)}
