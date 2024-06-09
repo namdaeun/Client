@@ -2,9 +2,9 @@ import { css } from "@emotion/react";
 import { circleStyle, dotWrapper, wrapper } from "./BoxHeader.style";
 import { useTheme } from "../../context/theme";
 import { Theme } from "../../styles/theme";
+import ModeSwitch from "../ModeSwitch/ModeSwitch";
 
 export const BoxHeader = () => {
-  const { toggleTheme } = useTheme();
 
   return (
     <div css={wrapper}>
@@ -13,8 +13,7 @@ export const BoxHeader = () => {
         <Circle color={Theme.colors.yellowDot}/>
         <Circle color={Theme.colors.greenDot}/>
       </div>
-      <button onClick={toggleTheme}>안녕</button>
-
+      <ModeSwitch/>
     </div>
   );
 };
