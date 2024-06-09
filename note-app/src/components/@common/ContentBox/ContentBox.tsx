@@ -10,7 +10,6 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const ContentBox = ({ children, styles = {}, variant = 'default', isFocus }: BoxProps) => {
-  console.log(isFocus);
   const { theme } = useTheme();
   const customStyle = {
     default: {
