@@ -46,10 +46,22 @@ export const textAreaContainer = css`
   flex-direction: column;
 `;
 
-export const textCount = css`
+export const countContainer = () => css`
+  display: flex;
+  width: 100%;
   margin-left: auto;
   padding: 0.5rem;
+`;
+
+export const textCount = (isExceed: boolean, theme: themeProps) => css`
+  margin-left: auto;
   ${Theme.fonts.detail};
+  color: ${isExceed ? theme.redBorderColor : theme.textColor};
+`;
+
+export const limitCount = (theme: themeProps) => css`
+  ${Theme.fonts.detail};
+  color: ${theme.textColor};
 `;
 
 export const buttonContainer = css`

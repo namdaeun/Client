@@ -7,7 +7,9 @@ import { useTheme } from '../../context/theme';
 import { Theme } from '../../styles/theme';
 import {
   buttonContainer,
+  countContainer,
   detailInputWrapper,
+  limitCount,
   pageWrapper,
   textCount,
   titleInputWrapper,
@@ -39,7 +41,7 @@ const AddPage = () => {
   return (
     <main css={pageWrapper}>
       <h1 css={[Theme.fonts.header, titleWrapper]}>Jinda Note</h1>
-      <ContentBox variant={'content'} styles={{ height: '3rem' }} isFocus={isTitleFocused}>
+      <ContentBox variant={'content'} styles={{ height: '2.5rem' }} isFocus={isTitleFocused}>
         <input
           css={[Theme.fonts.title, titleInputWrapper(theme)]}
           placeholder="노트 제목을 입력해주세요"
@@ -64,7 +66,10 @@ const AddPage = () => {
           onChange={handleTextCount}
           maxLength={1004}
         />
-        <span css={textCount}>{count}/1000</span>
+        <div css={countContainer}>
+          <span css={textCount(isExceed, theme)}>{count}</span>
+          <span css={limitCount(theme)}>/1000</span>
+        </div>
       </ContentBox>
       <section css={buttonContainer}>
         <Button variant="secondary" handleBtnClick={() => navigate(`/`)}>
