@@ -9,6 +9,8 @@ export type themeProps = {
 
   redBorderColor: string,
   backgroundImg: string,
+
+  switchColor: string,
 };
 
 const lightTheme = {
@@ -20,6 +22,8 @@ const lightTheme = {
 
   redBorderColor: '#FC5230',
   backgroundImg: 'src/assets/lightBackground.png',
+
+  switchColor: '#595959',
 };
 
 const darkTheme = {
@@ -31,6 +35,7 @@ const darkTheme = {
 
   redBorderColor: '#AE3A1E',
   backgroundImg: 'src/assets/darkBackground.png',
+  switchColor: 'lightgray',
 };
 
 const ThemeContext = createContext({
