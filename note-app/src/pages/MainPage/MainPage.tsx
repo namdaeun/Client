@@ -9,6 +9,7 @@ import Pagination from './Pagination/Pagination';
 import Quote from './Quote/Quote';
 import SearchBar from './SearchBar/SearchBar';
 import { useFetchData } from '../../hooks/useFetchData';
+import { sortData } from '../../utils/sort';
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -16,7 +17,9 @@ const MainPage = () => {
   const [startIdx, setStartIdx] = useState(0);
   const [endIdx, setEndIdx] = useState(0);
   const [search, setSearch] = useState('');
-  const currentMemoData = data.filter(d => d.title.toLowerCase().includes(search.toLowerCase())).slice(startIdx, endIdx);
+  const [filterSelect, setFilterSelect] = useState('최근생성순');
+
+  const currentMemoData = sortData(data.filter(d => d.title.toLowerCase().includes(search.toLowerCase())), filterSelect).slice(startIdx, endIdx);
 
   return (
     <>
@@ -24,7 +27,7 @@ const MainPage = () => {
       <Quote />
       <section css={barWrapper}>
         <SearchBar setSearch={setSearch}/>
-        <DropDown />
+        <DropDown category={filterSelect} setCategory={setFilterSelect}/>
       </section>
       {currentMemoData.map((data) => (
         <MemoList key={data.id} data={data} dispatch={dispatch} />
@@ -32,7 +35,7 @@ const MainPage = () => {
       <section css={bottomwrapper}>
         <div css={paginationWrapper}>
           <Pagination
-            totalMemo={data.length}
+            totalMemo={currentMemoData.length}
             setStartIdx={setStartIdx}
             setEndIdx={setEndIdx}
           />
