@@ -15,7 +15,8 @@ const MainPage = () => {
   const { data, dispatch } = useFetchData();
   const [startIdx, setStartIdx] = useState(0);
   const [endIdx, setEndIdx] = useState(0);
-
+  const [search, setSearch] = useState('');
+  console.log({search})
   const currentMemoData = data.slice(startIdx, endIdx);
 
   return (
@@ -23,7 +24,7 @@ const MainPage = () => {
       <Title>Jinda Note</Title>
       <Quote />
       <section css={barWrapper}>
-        <SearchBar />
+        <SearchBar setSearch={setSearch}/>
         <DropDown />
       </section>
       {currentMemoData.map((data) => (
@@ -34,7 +35,6 @@ const MainPage = () => {
           <Pagination
             totalMemo={data.length}
             setStartIdx={setStartIdx}
-            endIdx={endIdx}
             setEndIdx={setEndIdx}
           />
         </div>
