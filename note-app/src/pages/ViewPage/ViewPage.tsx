@@ -44,7 +44,8 @@ const ViewPage = () => {
           flexDirection: 'column',
           alignItems: 'start',
           justifyContent: 'space-between',
-          height: '80%',
+          height: '75%',
+          marginBottom: '5%',
           padding: '0.5rem',
         }}
       >

@@ -36,7 +36,7 @@ const MemoList = ({ data, dispatch }: MemoListProps) => {
       styles={{
         padding: '0.7rem',
         justifyContent: 'space-between',
-        marginBottom: '0.5rem',
+        marginBottom: '0.8rem',
         cursor: 'pointer',
       }}
     >

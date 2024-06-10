@@ -86,7 +86,7 @@ const WritingPage = ({ variant = 'add' }: AddPageProps) => {
       </ContentBox>
       <ContentBox
         variant={'content'}
-        styles={{ height: '70%', flexDirection: 'column' }}
+        styles={{ height: '67%', marginBottom: '3%', flexDirection: 'column' }}
         isFocus={isContentFocused}
         isExceed={isExceed}
       >
