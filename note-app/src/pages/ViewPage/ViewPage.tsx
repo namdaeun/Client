@@ -38,8 +38,7 @@ const ViewPage = () => {
         flexDirection: 'column',
         alignItems: 'start',
         justifyContent: 'space-between',
-        height: '70%',
-        margin: '0.5rem 0',
+        height: '80%',
         padding: '0.5rem'
       }}>
         <article css={s.content}>{data?.content}</article>
