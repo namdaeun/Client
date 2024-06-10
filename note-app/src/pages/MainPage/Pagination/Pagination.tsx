@@ -7,9 +7,10 @@ interface PaginationPropTypes {
   totalMemo: number;
   setStartIdx: React.Dispatch<React.SetStateAction<number>>;
   setEndIdx: React.Dispatch<React.SetStateAction<number>>;
+  filterSelect: string;
 }
 
-const Pagination = ({ totalMemo, setStartIdx, setEndIdx }: PaginationPropTypes) => {
+const Pagination = ({ totalMemo, setStartIdx, setEndIdx, filterSelect }: PaginationPropTypes) => {
   const { theme } = useTheme();
   const [page, setPage] = useState(1);
   const pages = Math.max(1, Math.ceil(totalMemo / PAGELIMIT));
@@ -22,6 +23,10 @@ const Pagination = ({ totalMemo, setStartIdx, setEndIdx }: PaginationPropTypes) 
   useEffect(() => {
     if (pages && pages < page) setPage(pages);
   }, [pages])
+
+  useEffect(() => {
+    setPage(1);
+  }, [filterSelect]);
 
   return (
     <section css={wrapper}>

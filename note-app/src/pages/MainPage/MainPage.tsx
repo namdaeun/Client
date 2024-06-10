@@ -10,7 +10,6 @@ import {
   buttonWrapper,
   listWrapper,
   mainWrapper,
-  paginationWrapper,
 } from './MainPage.style';
 import MemoList from './MemoList/MemoList';
 import Pagination from './Pagination/Pagination';
@@ -50,6 +49,7 @@ const MainPage = () => {
           totalMemo={filteredData.length}
           setStartIdx={setStartIdx}
           setEndIdx={setEndIdx}
+          filterSelect={filterSelect}
         />
         <div css={buttonWrapper}>
           <Button handleBtnClick={() => navigate('/add')}>새 노트</Button>

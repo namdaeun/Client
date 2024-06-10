@@ -13,6 +13,7 @@ export const barWrapper = css`
   align-items: center;
 
   height: 8%;
+  margin-bottom: 3%;
 `;
 
 export const listWrapper = css`
@@ -20,7 +21,7 @@ export const listWrapper = css`
   flex-direction: column;
   align-items: stretch;
 
-  height: 64%;
+  height: 61%;
   padding-top: 4%;
 `;
 
