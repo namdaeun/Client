@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef, useState } from 'react';
 import { categoryList } from '../../constants/filter';
 import { useTheme } from '../../context/theme';
+import useOutsideClick from '../../hooks/useOutsideClick';
 import {
   categoryListWrapper,
   categoryWrapper,
@@ -30,8 +31,10 @@ const DropDown = ({ category, setCategory }: DropDownProps) => {
     setIsOpen(!isOpen);
   };
 
+  useOutsideClick({ ref: dropDownRef, handleClose: () => setIsOpen(false) });
+
   return (
-    <section css={wrapper}>
+    <section css={wrapper} ref={dropDownRef}>
       <button onClick={dropdownHandler} css={dropDownWrapper(theme)}>
         {category}
         {isOpen ? (
@@ -41,7 +44,7 @@ const DropDown = ({ category, setCategory }: DropDownProps) => {
         )}
       </button>
       {isOpen && (
-        <section ref={dropDownRef} css={categoryListWrapper(theme)}>
+        <section css={categoryListWrapper(theme)}>
           {categoryList.map((categoryItem) => (
             <article
               key={categoryItem}
