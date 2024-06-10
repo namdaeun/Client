@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useContext, useState } from 'react';
-import darkBackground from 'src/assets/darkBackground.png';
-import lightBackground from 'src/assets/lightBackground.png';
+import darkBackground from '/src/assets/darkBackground.png';
+import lightBackground from '/src/assets/lightBackground.png';
 
 export type themeProps = {
   bgColor: string;
