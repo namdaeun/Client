@@ -5,14 +5,14 @@ import Button from '../../components/Button/Button';
 import ContentBox from '../../components/ContentBox/ContentBox';
 import Title from '../../components/Title/Title';
 import { useTheme } from '../../context/theme';
-import { Theme } from '../../styles/theme';
 import { NoteProps, useFetchData } from '../../hooks/useFetchData';
-import { buttonContainer, countContainer, detailInputWrapper, limitCount, pageWrapper, textCount, titleInputWrapper } from './WritingPage.style';
+import { Theme } from '../../styles/theme';
+import * as s from './WritingPage.style';
 
 interface AddPageProps {
   variant?: 'add' | 'edit';
 }
-const WritingPage = ({variant='add'}:AddPageProps) => {
+const WritingPage = ({ variant = 'add' }: AddPageProps) => {
   const { theme } = useTheme();
   const location = useLocation();
   const noteId = variant == 'edit' ? location.state : '';
@@ -29,7 +29,6 @@ const WritingPage = ({variant='add'}:AddPageProps) => {
   const [isContentFocused, setIsContentFocused] = useState(false);
   const [isExceed, setIsExceed] = useState(false);
   const navigate = useNavigate();
-  
 
   const handleTextCount = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
@@ -46,13 +45,13 @@ const WritingPage = ({variant='add'}:AddPageProps) => {
     };
 
     if (variant == 'add') {
-      dispatch({ type: 'CREATE', data: newNote});
+      dispatch({ type: 'CREATE', data: newNote });
     } else {
-      dispatch({ type: 'EDIT', data: newNote});
+      dispatch({ type: 'EDIT', data: newNote });
     }
 
     setTimeout(() => navigate('/'), 0);
-  }
+  };
 
   useEffect(() => {
     if (count > 1000) setIsExceed(true);
@@ -67,11 +66,11 @@ const WritingPage = ({variant='add'}:AddPageProps) => {
   }, []);
 
   return (
-    <main css={pageWrapper}>
+    <main css={s.pageWrapper}>
       <Title>Jinda Note</Title>
       <ContentBox variant={'content'} styles={{ height: '2.5rem' }} isFocus={isTitleFocused}>
         <input
-          css={[Theme.fonts.title, titleInputWrapper(theme)]}
+          css={[Theme.fonts.title, s.titleInputWrapper(theme)]}
           placeholder="노트 제목을 입력해주세요"
           ref={titleRef}
           onFocus={() => setIsTitleFocused(true)}
@@ -88,7 +87,7 @@ const WritingPage = ({variant='add'}:AddPageProps) => {
         isExceed={isExceed}
       >
         <textarea
-          css={[Theme.fonts.detail, detailInputWrapper(theme)]}
+          css={[Theme.fonts.detail, s.detailInputWrapper(theme)]}
           placeholder="노트 내용을 입력해주세요"
           ref={contentRef}
           onFocus={() => setIsContentFocused(true)}
@@ -97,12 +96,12 @@ const WritingPage = ({variant='add'}:AddPageProps) => {
           maxLength={1004}
           value={content}
         />
-        <div css={countContainer}>
-          <span css={textCount(isExceed, theme)}>{count}</span>
-          <span css={limitCount(theme)}>/1000</span>
+        <div css={s.countContainer}>
+          <span css={s.textCount(isExceed, theme)}>{count}</span>
+          <span css={s.limitCount(theme)}>/1000</span>
         </div>
       </ContentBox>
-      <section css={buttonContainer}>
+      <section css={s.buttonContainer}>
         <Button variant="secondary" handleBtnClick={() => navigate(`/`)}>
           뒤로가기
         </Button>

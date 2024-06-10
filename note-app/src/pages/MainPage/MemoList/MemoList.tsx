@@ -7,7 +7,7 @@ import ContentBox from '../../../components/ContentBox/ContentBox';
 import { ActionProps, NoteProps } from '../../../hooks/useFetchData';
 import { Theme } from '../../../styles/theme';
 import { timeSince } from '../../../utils/date';
-import { detailText, iconStyle, iconWrapper, textWrapper } from './MemoList.style';
+import * as s from './MemoList.style';
 
 interface MemoListProps {
   data: NoteProps;
@@ -40,20 +40,20 @@ const MemoList = ({ data, dispatch }: MemoListProps) => {
         cursor: 'pointer',
       }}
     >
-      <article css={textWrapper} onClick={handleClick}>
+      <article css={s.textWrapper} onClick={handleClick}>
         <FontAwesomeIcon
           icon={data?.like ? faSolidHeart : faRegularHeart}
           color={data?.like ? Theme.colors.heartOn : Theme.colors.subText2Color}
           size="lg"
           onClick={handleToggleLike}
-          css={iconStyle}
+          css={s.iconStyle}
         />
         <h1 css={[Theme.fonts.title]}>{data.title}</h1>
-        <h2 css={[Theme.fonts.detail, detailText]}>
+        <h2 css={[Theme.fonts.detail, s.detailText]}>
           {timeSince(data.editDate) + ' 전 수정했어요'}
         </h2>
       </article>
-      <div css={iconWrapper}>
+      <div css={s.iconWrapper}>
         <FontAwesomeIcon icon={faPen} onClick={() => navigate('/edit', { state: data.id })} />
         <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} />
       </div>

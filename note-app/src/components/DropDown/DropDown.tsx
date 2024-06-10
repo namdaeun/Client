@@ -4,13 +4,7 @@ import { useRef, useState } from 'react';
 import { categoryList } from '../../constants/filter';
 import { useTheme } from '../../context/theme';
 import useOutsideClick from '../../hooks/useOutsideClick';
-import {
-  categoryListWrapper,
-  categoryWrapper,
-  dropDownWrapper,
-  iconWrapper,
-  wrapper,
-} from './DropDown.style';
+import * as s from './DropDown.style';
 
 interface DropDownProps {
   category: string;
@@ -34,22 +28,22 @@ const DropDown = ({ category, setCategory }: DropDownProps) => {
   useOutsideClick({ ref: dropDownRef, handleClose: () => setIsOpen(false) });
 
   return (
-    <section css={wrapper} ref={dropDownRef}>
-      <button onClick={dropdownHandler} css={dropDownWrapper(theme)}>
+    <section css={s.wrapper} ref={dropDownRef}>
+      <button onClick={dropdownHandler} css={s.dropDownWrapper(theme)}>
         {category}
         {isOpen ? (
-          <FontAwesomeIcon icon={faCaretUp} css={iconWrapper} />
+          <FontAwesomeIcon icon={faCaretUp} css={s.iconWrapper} />
         ) : (
-          <FontAwesomeIcon icon={faCaretDown} css={iconWrapper} />
+          <FontAwesomeIcon icon={faCaretDown} css={s.iconWrapper} />
         )}
       </button>
       {isOpen && (
-        <section css={categoryListWrapper(theme)}>
+        <section css={s.categoryListWrapper(theme)}>
           {categoryList.map((categoryItem) => (
             <article
               key={categoryItem}
               onClick={() => handleCategory(categoryItem)}
-              css={categoryWrapper}
+              css={s.categoryWrapper}
             >
               {categoryItem}
             </article>
