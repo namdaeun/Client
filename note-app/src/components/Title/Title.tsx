@@ -7,7 +7,10 @@ const Title = ({children}: React.HTMLAttributes<HTMLDivElement>) => {
   );
 };
 const header = css`
-  padding: 0.5rem 0 0 0.2rem;
+  display: flex;
+  align-items: center;
+
+  height: 12%;
 `
 
 export default Title;

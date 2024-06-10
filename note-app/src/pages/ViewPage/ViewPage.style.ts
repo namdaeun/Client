@@ -1,6 +1,10 @@
 import { css } from "@emotion/react";
 import { Theme } from "../../styles/theme";
 
+export const wrapper = css`
+  width: 100%;
+  height: 95%;
+`
 export const iconWrapper = css`
   display: flex;
   align-items: center;
@@ -15,6 +19,8 @@ export const content = css`
 
 export const btnWrapper = css`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-between;
+
+  height: 8%;
 `

@@ -31,20 +31,17 @@ const ViewPage = () => {
   const handleBackClick = () => navigate('/');
   const handleShareClick = () => {};
   return (
-    <>
+    <main css={s.wrapper}>
       <Title>{data?.title}</Title>
-      <ContentBox
-        variant="content"
-        styles={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'start',
-          justifyContent: 'space-between',
-          height: '70%',
-          margin: '0.5rem 0',
-          padding: '0.5rem',
-        }}
-      >
+      <ContentBox variant="content" styles={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'start',
+        justifyContent: 'space-between',
+        height: '70%',
+        margin: '0.5rem 0',
+        padding: '0.5rem'
+      }}>
         <article css={s.content}>{data?.content}</article>
         <section css={s.iconWrapper}>
           <FontAwesomeIcon
@@ -65,7 +62,7 @@ const ViewPage = () => {
           공유하기
         </Button>
       </section>
-    </>
+    </main>
   );
 };
 

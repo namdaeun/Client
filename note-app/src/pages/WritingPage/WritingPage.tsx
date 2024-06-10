@@ -68,7 +68,11 @@ const WritingPage = ({ variant = 'add' }: AddPageProps) => {
   return (
     <main css={s.pageWrapper}>
       <Title>Jinda Note</Title>
-      <ContentBox variant={'content'} styles={{ height: '2.5rem' }} isFocus={isTitleFocused}>
+      <ContentBox
+        variant={'content'}
+        styles={{ height: '10%' }}
+        isFocus={isTitleFocused}
+      >
         <input
           css={[Theme.fonts.title, s.titleInputWrapper(theme)]}
           placeholder="노트 제목을 입력해주세요"
@@ -82,7 +86,7 @@ const WritingPage = ({ variant = 'add' }: AddPageProps) => {
       </ContentBox>
       <ContentBox
         variant={'content'}
-        styles={{ height: '30vh', flexDirection: 'column' }}
+        styles={{ height: '70%', flexDirection: 'column' }}
         isFocus={isContentFocused}
         isExceed={isExceed}
       >

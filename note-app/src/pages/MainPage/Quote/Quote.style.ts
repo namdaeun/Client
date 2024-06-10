@@ -12,7 +12,7 @@ export const fadeInUp = keyframes`
 `;
 
 export const quote = css`
-  padding: 0 0 0.5rem 0.2rem;
 
+  height: 8%;
   animation: ${fadeInUp} 0.5s ease-in-out;
 `

@@ -12,6 +12,7 @@ export const dropDownWrapper = (theme: themeProps) => css`
   display: flex;
   gap: 0.3rem;
   width: 5.5rem;
+  height: 8%;
   white-space: nowrap;
   padding: 0.4rem 0.5rem;
   border-radius: 0.4rem;

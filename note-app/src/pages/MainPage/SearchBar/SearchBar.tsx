@@ -27,6 +27,7 @@ const SearchBar = ({ setSearch }: SearchBarProps) => {
       styles={{
         padding: '0 0.3rem',
         width: '14rem',
+        height: '100%',
         backgroundColor: theme.bgColor,
         border: 'gray solid 1px',
       }}
