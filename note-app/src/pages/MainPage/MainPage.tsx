@@ -25,7 +25,8 @@ const MainPage = () => {
   const [search, setSearch] = useState('');
   const [filterSelect, setFilterSelect] = useState('최근생성순');
 
-  const currentMemoData = sortData(data.filter(d => d.title.toLowerCase().includes(search.toLowerCase())), filterSelect).slice(startIdx, endIdx);
+  const filteredData = sortData(data.filter(d => d.title.toLowerCase().includes(search.toLowerCase())), filterSelect);
+  const currentMemoData = filteredData.slice(startIdx, endIdx);
 
   return (
     <main css={mainWrapper}>
@@ -41,7 +42,7 @@ const MainPage = () => {
       <section css={bottomwrapper}>
         <div css={paginationWrapper}>
           <Pagination
-            totalMemo={currentMemoData.length}
+            totalMemo={filteredData.length}
             setStartIdx={setStartIdx}
             setEndIdx={setEndIdx}
           />
