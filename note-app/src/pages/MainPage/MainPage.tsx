@@ -13,19 +13,10 @@ import { useFetchData } from '../../hooks/useFetchData';
 const MainPage = () => {
   const navigate = useNavigate();
   const { data, dispatch } = useFetchData();
+  const [startIdx, setStartIdx] = useState(0); 
+  const [endIdx, setEndIdx] = useState(0); 
 
-  const handleBtnClick = () => {
-    navigate('/add');
-  };
-
-  const [page, setPage] = useState(1);
-  const limit = 3;
-
-  const totalMemo = data.length;
-
-  const startIndex = (page - 1) * limit;
-  const endIndex = page * limit;
-  const currentMemoData = data.slice(startIndex, endIndex);
+  const currentMemoData = data.slice(startIdx, endIdx);
 
   return (
     <>
@@ -35,16 +26,15 @@ const MainPage = () => {
         <SearchBar />
         <DropDown />
       </section>
-      <Button handleBtnClick={() => navigate('/add')}>새 노트</Button>
       {currentMemoData.map((data) => (
         <MemoList key={data.id} data={data} dispatch={dispatch}/>
       ))}
       <section css={bottomwrapper}>
         <div css={paginationWrapper}>
-          <Pagination totalMemo={totalMemo} limit={limit} page={page} setPage={setPage} />
+          <Pagination totalMemo={data.length} setStartIdx={setStartIdx} setEndIdx={setEndIdx} />
         </div>
         <div css={buttonWrapper}>
-          <Button handleBtnClick={handleBtnClick}>새 노트</Button>
+          <Button handleBtnClick={() => navigate('/add')}>새 노트</Button>
         </div>
       </section>
     </>

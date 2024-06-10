@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTheme } from '../../../context/theme';
 import { pagewrapper, wrapper } from './Pagination.style';
 
 interface PaginationPropTypes {
   totalMemo: number;
-  limit: number;
-  page: number;
-  setPage: React.Dispatch<React.SetStateAction<number>>;
+  setStartIdx: React.Dispatch<React.SetStateAction<number>>;
+  setEndIdx: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Pagination = ({ totalMemo, limit, page, setPage }: PaginationPropTypes) => {
+const Pagination = ({ totalMemo, setStartIdx, setEndIdx }: PaginationPropTypes) => {
   const { theme } = useTheme();
+  const [page, setPage] = useState(1);
+  const limit = 3;
+
+  setStartIdx((page - 1) * limit);
+  setEndIdx(page * limit);
+
   const pages = Math.ceil(totalMemo / limit);
+
+  useEffect(() => {
+    if (pages == 1) setPage(1);
+  }, [pages])
   return (
     <section css={wrapper}>
       <button
