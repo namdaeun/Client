@@ -1,11 +1,13 @@
+import { faHeart as faRegularHeart } from '@fortawesome/free-regular-svg-icons';
+import { faPen, faHeart as faSolidHeart, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ContentBox from '../../../components/ContentBox/ContentBox';
-import { Theme } from '../../../styles/theme';
-import { detailText, iconWrapper, textWrapper } from './MemoList.style';
-import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import ContentBox from '../../../components/ContentBox/ContentBox';
+import { useTheme } from '../../../context/theme';
 import { ActionProps, NoteProps } from '../../../hooks/useFetchData';
+import { Theme } from '../../../styles/theme';
 import { timeSince } from '../../../utils/date';
+import { detailText, iconWrapper, textWrapper } from './MemoList.style';
 
 interface MemoListProps {
   data: NoteProps;
@@ -14,14 +16,15 @@ interface MemoListProps {
 
 const MemoList = ({ data, dispatch }: MemoListProps) => {
   const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const handleClick = () => {
     navigate('/view', { state: data.id });
-  }
+  };
 
   const handleDelete = () => {
-    dispatch({ type: 'REMOVE', targetId: data.id});
-  }
+    dispatch({ type: 'REMOVE', targetId: data.id });
+  };
   return (
     <ContentBox
       variant="content"
@@ -31,13 +34,27 @@ const MemoList = ({ data, dispatch }: MemoListProps) => {
         marginBottom: '0.5rem',
       }}
     >
-      <article css={textWrapper} onClick={handleClick}>
+      <article css={[textWrapper, { position: 'relative' }]} onClick={handleClick}>
+        <FontAwesomeIcon
+          icon={data?.like ? faSolidHeart : faRegularHeart}
+          color={data?.like ? Theme.colors.heartOn : Theme.colors.subText2Color}
+          size="lg"
+          style={{
+            cursor: 'pointer',
+            position: 'absolute',
+            bottom: '2rem',
+            right: '4.8rem',
+            border: '1.5px',
+          }}
+        />
         <h1 css={Theme.fonts.title}>{data.title}</h1>
-        <h2 css={[Theme.fonts.detail, detailText]}>{timeSince(data.editDate) + ' 전 수정했어요'}</h2>
+        <h2 css={[Theme.fonts.detail, detailText]}>
+          {timeSince(data.editDate) + ' 전 수정했어요'}
+        </h2>
       </article>
       <div css={iconWrapper}>
-        <FontAwesomeIcon icon={faPen} onClick={() => navigate('/edit', { state: data.id })}/>
-        <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete}/>
+        <FontAwesomeIcon icon={faPen} onClick={() => navigate('/edit', { state: data.id })} />
+        <FontAwesomeIcon icon={faTrashCan} onClick={handleDelete} />
       </div>
     </ContentBox>
   );
