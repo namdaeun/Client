@@ -7,8 +7,6 @@ import MemoList from './MemoList/MemoList';
 import Quote from './Quote/Quote';
 import SearchBar from './SearchBar/SearchBar';
 import { useFetchData } from '../../hooks/useFetchData';
-import { timeSince } from '../../utils/date';
-import { useEffect, useState } from 'react';
 
 const MainPage = () => {
   const navigate = useNavigate();
@@ -24,7 +22,7 @@ const MainPage = () => {
       </section>
       {
         data.map(d => {
-          return <MemoList key={d.id} date={timeSince(d.date)} id={d.id}>{d.title}</MemoList>
+          return <MemoList key={d.id} data={d}/>
         })
       }
       <Button handleBtnClick={() => navigate('/add')}>새 노트</Button>

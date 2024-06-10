@@ -4,7 +4,8 @@ export type NoteProps = {
   id: string;
   title: string;
   content: string;
-  date: string;
+  createDate: string;
+  editDate: string;
   like: boolean;
 }
 

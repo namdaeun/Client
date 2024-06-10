@@ -14,7 +14,12 @@ interface AddPageProps {
 }
 const WritingPage = ({variant='add'}:AddPageProps) => {
   const { theme } = useTheme();
+  const location = useLocation();
+  const noteId = variant == 'edit' ? location.state : '';
+
   const { data: fetchData, dispatch } = useFetchData();
+  const data = fetchData.find((d: NoteProps) => d.id === noteId);
+
   const [title, setTitle] = useState('');
   const titleRef = useRef<HTMLInputElement>(null);
   const [content, setContent] = useState('');
@@ -25,8 +30,6 @@ const WritingPage = ({variant='add'}:AddPageProps) => {
   const [isExceed, setIsExceed] = useState(false);
   const navigate = useNavigate();
   
-  const location = useLocation();
-  const noteId = variant == 'edit' ? location.state : '';
 
   const handleTextCount = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
@@ -37,7 +40,8 @@ const WritingPage = ({variant='add'}:AddPageProps) => {
       id: noteId || new Date().getTime().toString(),
       title: title,
       content: content,
-      date: new Date().toISOString(),
+      createDate: data?.createDate || new Date().toISOString(),
+      editDate: new Date().toISOString(),
       like: false,
     };
 
@@ -57,7 +61,6 @@ const WritingPage = ({variant='add'}:AddPageProps) => {
 
   useEffect(() => {
     if (noteId) {
-      const data = fetchData.find((d: NoteProps) => d.id === noteId);
       setTitle(data?.title || '');
       setContent(data?.content || '');
     }
