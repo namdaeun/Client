@@ -1,9 +1,9 @@
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ContentBox from '../../../components/ContentBox/ContentBox';
-import { btnStyle, formStyle, search } from './SearchBar.style';
-import { useTheme } from '../../../context/theme';
 import { FormEvent, useEffect, useState } from 'react';
+import ContentBox from '../../../components/ContentBox/ContentBox';
+import { useTheme } from '../../../context/theme';
+import { btnStyle, formStyle, search } from './SearchBar.style';
 
 interface SearchBarProps {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
@@ -19,7 +19,7 @@ const SearchBar = ({ setSearch }: SearchBarProps) => {
 
   useEffect(() => {
     if (!inputValue) setSearch(inputValue);
-  }, [inputValue])
+  }, [inputValue]);
 
   return (
     <ContentBox
@@ -27,7 +27,7 @@ const SearchBar = ({ setSearch }: SearchBarProps) => {
       styles={{
         padding: '0 0.3rem',
         width: '14rem',
-        backgroundColor: 'rgba(255, 255, 255, 0.5)',
+        backgroundColor: theme.bgColor,
         border: 'gray solid 1px',
       }}
     >
@@ -40,7 +40,7 @@ const SearchBar = ({ setSearch }: SearchBarProps) => {
           onChange={(e) => setInputValue(e.target.value)}
         />
         <button type="submit" css={btnStyle}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} color={theme.textColor}/>
+          <FontAwesomeIcon icon={faMagnifyingGlass} color={theme.textColor} />
         </button>
       </form>
     </ContentBox>
