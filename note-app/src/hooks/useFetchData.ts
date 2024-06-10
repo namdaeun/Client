@@ -45,7 +45,6 @@ const reducer = (state: NoteProps[], action: ActionProps): NoteProps[] => {
 export const useFetchData = () => {
   const initialState = JSON.parse(localStorage.getItem("noteData") || '[]');
   const [data, dispatch] = useReducer(reducer, initialState);
-  console.log({data});
   useEffect(() => {
     const loadedData = JSON.parse(localStorage.getItem("noteData") || '[]');
     dispatch({ type: "INIT", data: loadedData})
