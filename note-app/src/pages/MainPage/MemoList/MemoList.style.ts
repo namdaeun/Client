@@ -21,8 +21,8 @@ export const iconWrapper = css`
 
 export const iconStyle = css`
   position: absolute;
-  bottom: 2rem;
-  right: 4.8rem;
+  top: -1.3rem;
+  left: -1.3rem;
   border: 1.5px;
-  cursor: 'pointer';
+  cursor: pointer;
 `;
