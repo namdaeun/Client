@@ -18,7 +18,6 @@ export const barWrapper = css`
 export const listWrapper = css`
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: stretch;
 
   height: 64%;
