@@ -4,7 +4,13 @@ import Button from '../../components/Button/Button';
 import DropDown from '../../components/DropDown/DropDown';
 import Title from '../../components/Title/Title';
 import { useFetchData } from '../../hooks/useFetchData';
-import { barWrapper, bottomwrapper, buttonWrapper, paginationWrapper } from './MainPage.style';
+import {
+  barWrapper,
+  bottomwrapper,
+  buttonWrapper,
+  mainWrapper,
+  paginationWrapper,
+} from './MainPage.style';
 import MemoList from './MemoList/MemoList';
 import Pagination from './Pagination/Pagination';
 import Quote from './Quote/Quote';
@@ -22,7 +28,7 @@ const MainPage = () => {
   const currentMemoData = sortData(data.filter(d => d.title.toLowerCase().includes(search.toLowerCase())), filterSelect).slice(startIdx, endIdx);
 
   return (
-    <>
+    <main css={mainWrapper}>
       <Title>Jinda Note</Title>
       <Quote />
       <section css={barWrapper}>
@@ -44,7 +50,7 @@ const MainPage = () => {
           <Button handleBtnClick={() => navigate('/add')}>새 노트</Button>
         </div>
       </section>
-    </>
+    </main>
   );
 };
 

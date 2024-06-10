@@ -1,5 +1,9 @@
 import { css } from '@emotion/react';
 
+export const mainWrapper = css`
+  position: relative;
+`;
+
 export const barWrapper = css`
   display: flex;
   gap: 0.5rem;
@@ -10,16 +14,16 @@ export const barWrapper = css`
 
 export const bottomwrapper = css`
   display: flex;
-  align-items: center;
+  justify-content: center;
 `;
 
 export const paginationWrapper = css`
   position: absolute;
-  top: 76%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 20rem;
 `;
 
 export const buttonWrapper = css`
-  margin-left: auto;
+  position: absolute;
+  top: 20rem;
+  right: 0rem;
 `;
