@@ -13,8 +13,8 @@ import { useFetchData } from '../../hooks/useFetchData';
 const MainPage = () => {
   const navigate = useNavigate();
   const { data, dispatch } = useFetchData();
-  const [startIdx, setStartIdx] = useState(0); 
-  const [endIdx, setEndIdx] = useState(0); 
+  const [startIdx, setStartIdx] = useState(0);
+  const [endIdx, setEndIdx] = useState(0);
 
   const currentMemoData = data.slice(startIdx, endIdx);
 
@@ -27,11 +27,16 @@ const MainPage = () => {
         <DropDown />
       </section>
       {currentMemoData.map((data) => (
-        <MemoList key={data.id} data={data} dispatch={dispatch}/>
+        <MemoList key={data.id} data={data} dispatch={dispatch} />
       ))}
       <section css={bottomwrapper}>
         <div css={paginationWrapper}>
-          <Pagination totalMemo={data.length} setStartIdx={setStartIdx} setEndIdx={setEndIdx} />
+          <Pagination
+            totalMemo={data.length}
+            setStartIdx={setStartIdx}
+            endIdx={endIdx}
+            setEndIdx={setEndIdx}
+          />
         </div>
         <div css={buttonWrapper}>
           <Button handleBtnClick={() => navigate('/add')}>새 노트</Button>

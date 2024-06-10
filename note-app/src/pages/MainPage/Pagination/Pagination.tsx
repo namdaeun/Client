@@ -13,13 +13,15 @@ const Pagination = ({ totalMemo, setStartIdx, setEndIdx }: PaginationPropTypes) 
   const [page, setPage] = useState(1);
   const limit = 3;
 
-  setStartIdx((page - 1) * limit);
-  setEndIdx(page * limit);
+  useEffect(() => {
+    setStartIdx((page - 1) * limit);
+    setEndIdx(page * limit);
+  }, [page]);
 
   const pages = Math.ceil(totalMemo / limit);
 
   useEffect(() => {
-    if (pages == 1) setPage(1);
+    if (pages < page) setPage(pages);
   }, [pages])
   return (
     <section css={wrapper}>
