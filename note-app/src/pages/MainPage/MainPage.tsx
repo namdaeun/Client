@@ -16,8 +16,7 @@ const MainPage = () => {
   const [startIdx, setStartIdx] = useState(0);
   const [endIdx, setEndIdx] = useState(0);
   const [search, setSearch] = useState('');
-  console.log({search})
-  const currentMemoData = data.slice(startIdx, endIdx);
+  const currentMemoData = data.filter(d => d.title.toLowerCase().includes(search.toLowerCase())).slice(startIdx, endIdx);
 
   return (
     <>

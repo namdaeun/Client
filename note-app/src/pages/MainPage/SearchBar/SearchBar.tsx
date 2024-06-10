@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ContentBox from '../../../components/ContentBox/ContentBox';
 import { btnStyle, formStyle, search } from './SearchBar.style';
 import { useTheme } from '../../../context/theme';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 
 interface SearchBarProps {
   setSearch: React.Dispatch<React.SetStateAction<string>>;
@@ -16,6 +16,11 @@ const SearchBar = ({ setSearch }: SearchBarProps) => {
     e.preventDefault();
     setSearch(inputValue);
   };
+
+  useEffect(() => {
+    if (!inputValue) setSearch(inputValue);
+  }, [inputValue])
+
   return (
     <ContentBox
       variant="content"
