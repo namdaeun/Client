@@ -7,7 +7,7 @@ import ContentBox from '../../../components/ContentBox/ContentBox';
 import { ActionProps, NoteProps } from '../../../hooks/useFetchData';
 import { Theme } from '../../../styles/theme';
 import { timeSince } from '../../../utils/date';
-import { detailText, iconWrapper, textWrapper } from './MemoList.style';
+import { detailText, iconStyle, iconWrapper, textWrapper } from './MemoList.style';
 
 interface MemoListProps {
   data: NoteProps;
@@ -39,19 +39,13 @@ const MemoList = ({ data, dispatch }: MemoListProps) => {
         marginBottom: '0.5rem',
       }}
     >
-      <article css={[textWrapper, { position: 'relative' }]} onClick={handleClick}>
+      <article css={[textWrapper]} onClick={handleClick}>
         <FontAwesomeIcon
           icon={data?.like ? faSolidHeart : faRegularHeart}
           color={data?.like ? Theme.colors.heartOn : Theme.colors.subText2Color}
           size="lg"
           onClick={handleToggleLike}
-          style={{
-            cursor: 'pointer',
-            position: 'absolute',
-            bottom: '2rem',
-            right: '4.8rem',
-            border: '1.5px',
-          }}
+          css={iconStyle}
         />
         <h1 css={Theme.fonts.title}>{data.title}</h1>
         <h2 css={[Theme.fonts.detail, detailText]}>
