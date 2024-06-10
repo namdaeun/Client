@@ -1,9 +1,9 @@
 import { faHeart as faRegularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faPen, faHeart as faSolidHeart, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import ContentBox from '../../../components/ContentBox/ContentBox';
-import { useTheme } from '../../../context/theme';
 import { ActionProps, NoteProps } from '../../../hooks/useFetchData';
 import { Theme } from '../../../styles/theme';
 import { timeSince } from '../../../utils/date';
@@ -16,7 +16,6 @@ interface MemoListProps {
 
 const MemoList = ({ data, dispatch }: MemoListProps) => {
   const navigate = useNavigate();
-  const { theme } = useTheme();
 
   const handleClick = () => {
     navigate('/view', { state: data.id });
@@ -25,6 +24,12 @@ const MemoList = ({ data, dispatch }: MemoListProps) => {
   const handleDelete = () => {
     dispatch({ type: 'REMOVE', targetId: data.id });
   };
+
+  const handleToggleLike = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    dispatch({ type: 'TOGGLE_LIKE', targetId: data.id });
+  };
+
   return (
     <ContentBox
       variant="content"
@@ -39,6 +44,7 @@ const MemoList = ({ data, dispatch }: MemoListProps) => {
           icon={data?.like ? faSolidHeart : faRegularHeart}
           color={data?.like ? Theme.colors.heartOn : Theme.colors.subText2Color}
           size="lg"
+          onClick={handleToggleLike}
           style={{
             cursor: 'pointer',
             position: 'absolute',
