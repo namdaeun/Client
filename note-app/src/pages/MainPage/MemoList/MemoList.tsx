@@ -4,16 +4,16 @@ import { Theme } from '../../../styles/theme';
 import { detailText, iconWrapper, textWrapper } from './MemoList.style';
 import { faPen, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import { NoteProps, useFetchData } from '../../../hooks/useFetchData';
+import { ActionProps, NoteProps } from '../../../hooks/useFetchData';
 import { timeSince } from '../../../utils/date';
 
-interface MemoListProps extends React.HTMLAttributes<HTMLDivElement> {
+interface MemoListProps {
   data: NoteProps;
+  dispatch: React.Dispatch<ActionProps>;
 }
 
-const MemoList = ({ data}: MemoListProps) => {
+const MemoList = ({ data, dispatch }: MemoListProps) => {
   const navigate = useNavigate();
-  const { dispatch } = useFetchData();
 
   const handleClick = () => {
     navigate('/view', { state: data.id });

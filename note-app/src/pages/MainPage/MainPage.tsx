@@ -22,7 +22,7 @@ const MainPage = () => {
       </section>
       {
         data.map(d => {
-          return <MemoList key={d.id} data={d}/>
+          return <MemoList key={d.id} data={d} dispatch={dispatch}/>
         })
       }
       <Button handleBtnClick={() => navigate('/add')}>새 노트</Button>

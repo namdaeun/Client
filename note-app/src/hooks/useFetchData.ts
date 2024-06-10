@@ -9,7 +9,7 @@ export type NoteProps = {
   like: boolean;
 }
 
-type ActionProps = { type: 'INIT'; data: NoteProps[] }
+export type ActionProps = { type: 'INIT'; data: NoteProps[] }
   | { type: 'CREATE'; data: NoteProps }
   | { type: 'REMOVE'; targetId: string }
   | { type: 'EDIT'; data: NoteProps }
