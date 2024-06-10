@@ -3,28 +3,37 @@ import ContentBox from "../../components/ContentBox/ContentBox";
 import Title from "../../components/Title/Title";
 import { faPen, faHeart as faSolidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faRegularHeart} from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
 import { Theme } from "../../styles/theme";
 import { btnWrapper, content, iconWrapper } from "./ViewPage.style";
 import { useTheme } from "../../context/theme";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
+import { NoteProps, useFetchData } from "../../hooks/useFetchData";
 
 const ViewPage = () => {
   const {theme} = useTheme();
+  const noteId = useLocation().state;
+  const { data: fetchData, dispatch } = useFetchData();
+  const data = fetchData.find(d => d.id === noteId);
+  const toggleHeart = () => {
+    if (!data?.id) return;
 
-  const [isHeart, setIsHeart] = useState(false);
-  const toggleHeart = () => setIsHeart(prev => !prev);
+    const newData: NoteProps = {
+      ...data,
+      like: !data.like,
+    };
+    dispatch({ type: 'EDIT', data: newData });
+  }
 
   const navigate = useNavigate();
-  const handleEditClick = () => navigate('/edit');
+  const handleEditClick = () => navigate('/edit', { state: noteId });
 
   const handleBackClick = () => navigate('/');
-  const handleSaveClick = () => {
+  const handleShareClick = () => {
   }
   return (
     <>
-      <Title>리액트 토이프로젝트</Title>
+      <Title>{data?.title}</Title>
       <ContentBox variant="content" styles={{
         display: 'flex',
         flexDirection: 'column',
@@ -34,11 +43,11 @@ const ViewPage = () => {
         margin: '0.5rem 0',
         padding: '0.5rem'
       }}>
-        <article css={content}>어쩌고 저쩌고</article>
+        <article css={content}>{data?.content}</article>
         <section css={iconWrapper}>
           <FontAwesomeIcon
-            icon={isHeart ? faSolidHeart : faRegularHeart}
-            color={isHeart ? Theme.colors.heartOn : theme.textColor}
+            icon={data?.like ? faSolidHeart : faRegularHeart}
+            color={data?.like ? Theme.colors.heartOn : theme.textColor}
             onClick={toggleHeart}
             size="lg"
             style={{cursor: 'pointer'}}
@@ -51,8 +60,8 @@ const ViewPage = () => {
         </section>
       </ContentBox>
       <section css={btnWrapper}>
-        <Button variant="default" handleBtnClick={handleBackClick}>뒤로가기</Button>
-        <Button variant="secondary" handleBtnClick={handleSaveClick}>저장하기</Button>
+        <Button variant="secondary" handleBtnClick={handleBackClick}>뒤로가기</Button>
+        <Button variant="default" handleBtnClick={handleShareClick}>공유하기</Button>
       </section>
     </>
   );

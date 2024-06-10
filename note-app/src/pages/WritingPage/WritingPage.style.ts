@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { themeProps } from '../../context/theme';
-import { Theme } from './../../styles/theme';
+import { Theme } from '../../styles/theme';
 
 export const pageWrapper = css`
   display: flex;

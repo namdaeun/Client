@@ -1,42 +1,70 @@
 import { useEffect, useRef, useState } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Button from '../../components/Button/Button';
 import ContentBox from '../../components/ContentBox/ContentBox';
 import Title from '../../components/Title/Title';
 import { useTheme } from '../../context/theme';
 import { Theme } from '../../styles/theme';
-import {
-  buttonContainer,
-  countContainer,
-  detailInputWrapper,
-  limitCount,
-  pageWrapper,
-  textCount,
-  titleInputWrapper,
-} from './AddPage.style';
+import { NoteProps, useFetchData } from '../../hooks/useFetchData';
+import { buttonContainer, countContainer, detailInputWrapper, limitCount, pageWrapper, textCount, titleInputWrapper } from './WritingPage.style';
 
-const AddPage = () => {
+interface AddPageProps {
+  variant?: 'add' | 'edit';
+}
+const WritingPage = ({variant='add'}:AddPageProps) => {
   const { theme } = useTheme();
+  const location = useLocation();
+  const noteId = variant == 'edit' ? location.state : '';
+
+  const { data: fetchData, dispatch } = useFetchData();
+  const data = fetchData.find((d: NoteProps) => d.id === noteId);
+
+  const [title, setTitle] = useState('');
   const titleRef = useRef<HTMLInputElement>(null);
+  const [content, setContent] = useState('');
+  const count = content.length;
   const contentRef = useRef<HTMLTextAreaElement>(null);
   const [isTitleFocused, setIsTitleFocused] = useState(false);
   const [isContentFocused, setIsContentFocused] = useState(false);
-  const [count, setCount] = useState(0);
   const [isExceed, setIsExceed] = useState(false);
   const navigate = useNavigate();
+  
 
   const handleTextCount = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setCount(e.target.value.length);
+    setContent(e.target.value);
   };
 
-  useEffect(() => {
-    if (count > 1000) {
-      setIsExceed(true);
+  const handleSaveClick = () => {
+    const newNote: NoteProps = {
+      id: noteId || new Date().getTime().toString(),
+      title: title,
+      content: content,
+      createDate: data?.createDate || new Date().toISOString(),
+      editDate: new Date().toISOString(),
+      like: false,
+    };
+
+    if (variant == 'add') {
+      dispatch({ type: 'CREATE', data: newNote});
     } else {
-      setIsExceed(false);
+      dispatch({ type: 'EDIT', data: newNote});
     }
+
+    setTimeout(() => navigate('/'), 0);
+  }
+
+  useEffect(() => {
+    if (count > 1000) setIsExceed(true);
+    else setIsExceed(false);
   }, [count]);
+
+  useEffect(() => {
+    if (noteId) {
+      setTitle(data?.title || '');
+      setContent(data?.content || '');
+    }
+  }, []);
 
   return (
     <main css={pageWrapper}>
@@ -49,6 +77,8 @@ const AddPage = () => {
           onFocus={() => setIsTitleFocused(true)}
           onBlur={() => setIsTitleFocused(false)}
           maxLength={17}
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
         />
       </ContentBox>
       <ContentBox
@@ -65,6 +95,7 @@ const AddPage = () => {
           onBlur={() => setIsContentFocused(false)}
           onChange={handleTextCount}
           maxLength={1004}
+          value={content}
         />
         <div css={countContainer}>
           <span css={textCount(isExceed, theme)}>{count}</span>
@@ -75,7 +106,7 @@ const AddPage = () => {
         <Button variant="secondary" handleBtnClick={() => navigate(`/`)}>
           뒤로가기
         </Button>
-        <Button variant="default" handleBtnClick={() => navigate(`/`)}>
+        <Button variant="default" handleBtnClick={handleSaveClick}>
           저장하기
         </Button>
       </section>
@@ -83,4 +114,4 @@ const AddPage = () => {
   );
 };
 
-export default AddPage;
+export default WritingPage;
