@@ -2,28 +2,38 @@ import { css } from '@emotion/react';
 
 export const mainWrapper = css`
   position: relative;
+  width: 100%;
+  height: 95%;
 `;
 
 export const barWrapper = css`
   display: flex;
   gap: 0.5rem;
   justify-content: space-between;
+  align-items: center;
 
-  padding-bottom: 0.7rem;
+  height: 8%;
+`;
+
+export const listWrapper = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+
+  height: 64%;
+  padding-top: 4%;
 `;
 
 export const bottomwrapper = css`
   display: flex;
-  justify-content: center;
-`;
+  justify-content: space-between;
+  align-items: center;
 
-export const paginationWrapper = css`
-  position: absolute;
-  top: 20rem;
+  padding-left: 35%;
+  height: 8%;
 `;
 
 export const buttonWrapper = css`
-  position: absolute;
-  top: 20rem;
-  right: 0rem;
+  margin-left: auto;
 `;

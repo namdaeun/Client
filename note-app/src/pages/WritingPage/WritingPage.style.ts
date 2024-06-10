@@ -6,9 +6,10 @@ export const pageWrapper = css`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-`;
 
-export const titleWrapper = css``;
+  width: 100%;
+  height: 95%;
+`;
 
 export const titleInputWrapper = (theme: themeProps) => css`
   width: 100%;

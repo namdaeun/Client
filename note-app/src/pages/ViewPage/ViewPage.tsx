@@ -4,7 +4,7 @@ import Title from "../../components/Title/Title";
 import { faPen, faHeart as faSolidHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faRegularHeart} from "@fortawesome/free-regular-svg-icons";
 import { Theme } from "../../styles/theme";
-import { btnWrapper, content, iconWrapper } from "./ViewPage.style";
+import { btnWrapper, content, iconWrapper, wrapper } from "./ViewPage.style";
 import { useTheme } from "../../context/theme";
 import { useLocation, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
@@ -32,16 +32,16 @@ const ViewPage = () => {
   const handleShareClick = () => {
   }
   return (
-    <>
+    <main css={wrapper}>
       <Title>{data?.title}</Title>
       <ContentBox variant="content" styles={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'start',
         justifyContent: 'space-between',
-        height: '70%',
-        margin: '0.5rem 0',
-        padding: '0.5rem'
+        height: '77%',
+        padding: '0.5rem',
+        marginBottom: '3%',
       }}>
         <article css={content}>{data?.content}</article>
         <section css={iconWrapper}>
@@ -63,7 +63,7 @@ const ViewPage = () => {
         <Button variant="secondary" handleBtnClick={handleBackClick}>뒤로가기</Button>
         <Button variant="default" handleBtnClick={handleShareClick}>공유하기</Button>
       </section>
-    </>
+    </main>
   );
 };
 

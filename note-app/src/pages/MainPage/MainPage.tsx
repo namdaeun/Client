@@ -8,6 +8,7 @@ import {
   barWrapper,
   bottomwrapper,
   buttonWrapper,
+  listWrapper,
   mainWrapper,
   paginationWrapper,
 } from './MainPage.style';
@@ -25,7 +26,10 @@ const MainPage = () => {
   const [search, setSearch] = useState('');
   const [filterSelect, setFilterSelect] = useState('최근생성순');
 
-  const filteredData = sortData(data.filter(d => d.title.toLowerCase().includes(search.toLowerCase())), filterSelect);
+  const filteredData = sortData(
+    data.filter((d) => d.title.toLowerCase().includes(search.toLowerCase())),
+    filterSelect,
+  );
   const currentMemoData = filteredData.slice(startIdx, endIdx);
 
   return (
@@ -33,20 +37,20 @@ const MainPage = () => {
       <Title>Jinda Note</Title>
       <Quote />
       <section css={barWrapper}>
-        <SearchBar setSearch={setSearch}/>
-        <DropDown category={filterSelect} setCategory={setFilterSelect}/>
+        <SearchBar setSearch={setSearch} />
+        <DropDown category={filterSelect} setCategory={setFilterSelect} />
       </section>
-      {currentMemoData.map((data) => (
-        <MemoList key={data.id} data={data} dispatch={dispatch} />
-      ))}
+      <section css={listWrapper}>
+        {currentMemoData.map((data) => (
+          <MemoList key={data.id} data={data} dispatch={dispatch} />
+        ))}
+      </section>
       <section css={bottomwrapper}>
-        <div css={paginationWrapper}>
-          <Pagination
-            totalMemo={filteredData.length}
-            setStartIdx={setStartIdx}
-            setEndIdx={setEndIdx}
-          />
-        </div>
+        <Pagination
+          totalMemo={filteredData.length}
+          setStartIdx={setStartIdx}
+          setEndIdx={setEndIdx}
+        />
         <div css={buttonWrapper}>
           <Button handleBtnClick={() => navigate('/add')}>새 노트</Button>
         </div>
