@@ -7,6 +7,7 @@ export const textWrapper = css`
   flex-direction: column;
   gap: 0.1rem;
   cursor: pointer;
+  width: 100%;
 `;
 
 export const detailText = css`

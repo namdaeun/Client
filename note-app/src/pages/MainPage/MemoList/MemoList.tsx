@@ -37,9 +37,10 @@ const MemoList = ({ data, dispatch }: MemoListProps) => {
         padding: '0.7rem',
         justifyContent: 'space-between',
         marginBottom: '0.5rem',
+        cursor: 'pointer',
       }}
     >
-      <article css={[textWrapper]} onClick={handleClick}>
+      <article css={textWrapper} onClick={handleClick}>
         <FontAwesomeIcon
           icon={data?.like ? faSolidHeart : faRegularHeart}
           color={data?.like ? Theme.colors.heartOn : Theme.colors.subText2Color}
@@ -47,7 +48,7 @@ const MemoList = ({ data, dispatch }: MemoListProps) => {
           onClick={handleToggleLike}
           css={iconStyle}
         />
-        <h1 css={Theme.fonts.title}>{data.title}</h1>
+        <h1 css={[Theme.fonts.title]}>{data.title}</h1>
         <h2 css={[Theme.fonts.detail, detailText]}>
           {timeSince(data.editDate) + ' 전 수정했어요'}
         </h2>
