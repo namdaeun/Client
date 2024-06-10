@@ -12,7 +12,7 @@ interface PaginationPropTypes {
 const Pagination = ({ totalMemo, setStartIdx, setEndIdx }: PaginationPropTypes) => {
   const { theme } = useTheme();
   const [page, setPage] = useState(1);
-  const pages = Math.ceil(totalMemo / PAGELIMIT);
+  const pages = Math.max(1, Math.ceil(totalMemo / PAGELIMIT));
 
   useEffect(() => {
     setStartIdx(Math.max(0, (page - 1) * PAGELIMIT));
