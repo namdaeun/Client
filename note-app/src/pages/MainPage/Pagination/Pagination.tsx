@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTheme } from '../../../context/theme';
 import { pagewrapper, wrapper } from './Pagination.style';
+import { PAGELIMIT } from '../../../constants/filter';
 
 interface PaginationPropTypes {
   totalMemo: number;
@@ -11,18 +12,17 @@ interface PaginationPropTypes {
 const Pagination = ({ totalMemo, setStartIdx, setEndIdx }: PaginationPropTypes) => {
   const { theme } = useTheme();
   const [page, setPage] = useState(1);
-  const limit = 3;
+  const pages = Math.ceil(totalMemo / PAGELIMIT);
 
   useEffect(() => {
-    setStartIdx((page - 1) * limit);
-    setEndIdx(page * limit);
+    setStartIdx(Math.max(0, (page - 1) * PAGELIMIT));
+    setEndIdx(Math.max(1, page * PAGELIMIT));
   }, [page]);
 
-  const pages = Math.ceil(totalMemo / limit);
-
   useEffect(() => {
-    if (pages < page) setPage(pages);
+    if (pages && pages < page) setPage(pages);
   }, [pages])
+
   return (
     <section css={wrapper}>
       <button
