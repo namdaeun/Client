@@ -9,29 +9,36 @@ import MemoList from './MemoList/MemoList';
 import Pagination from './Pagination/Pagination';
 import Quote from './Quote/Quote';
 import SearchBar from './SearchBar/SearchBar';
+import { sortData } from '../../utils/sort';
 
 const MainPage = () => {
   const navigate = useNavigate();
   const { data, dispatch } = useFetchData();
   const [startIdx, setStartIdx] = useState(0);
   const [endIdx, setEndIdx] = useState(0);
+  const [search, setSearch] = useState('');
+  const [filterSelect, setFilterSelect] = useState('최근생성순');
 
-  const currentMemoData = data.slice(startIdx, endIdx);
+  const currentMemoData = sortData(data.filter(d => d.title.toLowerCase().includes(search.toLowerCase())), filterSelect).slice(startIdx, endIdx);
 
   return (
     <>
       <Title>Jinda Note</Title>
       <Quote />
       <section css={barWrapper}>
-        <SearchBar />
-        <DropDown />
+        <SearchBar setSearch={setSearch}/>
+        <DropDown category={filterSelect} setCategory={setFilterSelect}/>
       </section>
       {currentMemoData.map((data) => (
         <MemoList key={data.id} data={data} dispatch={dispatch} />
       ))}
       <section css={bottomwrapper}>
         <div css={paginationWrapper}>
-          <Pagination totalMemo={data.length} setStartIdx={setStartIdx} setEndIdx={setEndIdx} />
+          <Pagination
+            totalMemo={currentMemoData.length}
+            setStartIdx={setStartIdx}
+            setEndIdx={setEndIdx}
+          />
         </div>
         <div css={buttonWrapper}>
           <Button handleBtnClick={() => navigate('/add')}>새 노트</Button>

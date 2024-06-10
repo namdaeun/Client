@@ -11,9 +11,13 @@ import {
   wrapper,
 } from './DropDown.style';
 
-const DropDown = () => {
+interface DropDownProps {
+  category: string;
+  setCategory: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const DropDown = ({ category, setCategory }: DropDownProps) => {
   const { theme } = useTheme();
-  const [category, setCategory] = useState('최근생성순');
   const [isOpen, setIsOpen] = useState(false);
   const dropDownRef = useRef<HTMLDivElement>(null);
 
