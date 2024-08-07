@@ -1,3 +1,4 @@
+import React from 'react';
 import { faHeart as faRegularHeart } from '@fortawesome/free-regular-svg-icons';
 import { faPen, faHeart as faSolidHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,14 +9,15 @@ import Title from '../../components/Title/Title';
 import { useTheme } from '../../context/theme';
 import { NoteProps, useFetchData } from '../../hooks/useFetchData';
 import { Theme } from '../../styles/theme';
-import { copyLink } from '../../utils/copyLink';
 import * as s from './ViewPage.style';
+import html2canvas from 'html2canvas';
 
-const ViewPage = () => {
+const ViewPage: React.FC = () => {
   const { theme } = useTheme();
-  const noteId = useLocation().state;
+  const noteId = useLocation().state as string;
   const { data: fetchData, dispatch } = useFetchData();
   const data = fetchData.find((d) => d.id === noteId);
+
   const toggleHeart = () => {
     if (!data?.id) return;
 
@@ -30,8 +32,27 @@ const ViewPage = () => {
   const handleEditClick = () => navigate('/edit', { state: noteId });
 
   const handleBackClick = () => navigate('/');
-  const handleShareClick = () => {
-    copyLink(`https://note-app-omega-one.vercel.app/view`);
+
+  const handleShareClick = async () => {
+    const element = document.getElementById('screenshot-area');
+    if (element) {
+      const canvas = await html2canvas(element);
+      canvas.toBlob(async (blob) => {
+        if (blob) {
+          try {
+            await navigator.clipboard.write([
+              new ClipboardItem({
+                'image/png': blob,
+              }),
+            ]);
+            alert('Jinda Note를 이용해주셔서 감사합니다. 성공적으로 공유되었습니다.');
+          } catch (error) {
+            console.error('클립보드 복사 실패:', error);
+            alert('공유를 실패하였습니다. 다시 시도해주시기 바랍니다.');
+          }
+        }
+      });
+    }
   };
 
   return (
@@ -65,7 +86,7 @@ const ViewPage = () => {
         <Button variant="secondary" handleBtnClick={handleBackClick}>
           뒤로가기
         </Button>
-        <Button variant="default" handleBtnClick={handleShareClick} onClick={handleShareClick}>
+        <Button variant="default" handleBtnClick={handleShareClick}>
           공유하기
         </Button>
       </section>

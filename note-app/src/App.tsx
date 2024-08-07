@@ -21,8 +21,8 @@ function App() {
   const { theme } = useTheme();
 
   return (
-    <div css={wrapper(theme)}>
-      <ContentBox variant='default'>
+    <div css={wrapper(theme)} id="screenshot-area">
+      <ContentBox variant="default">
         <BoxHeader />
         <Router />
       </ContentBox>
